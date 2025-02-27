@@ -1,0 +1,251 @@
+<body>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <section class="login_section">
+    <div class="bg_img">
+      <div class="logo_div">
+        <img src="./assets/task_icon.png" alt="Task_icon" class="task_icon" />
+        <p class="task_master">Task Master</p>
+      </div>
+      <div class="text_para">
+        "Welcome <span class="font_green">Task Master</span> , your all-in-one
+        platform for seamless task and meeting management. Stay organized,
+        collaborate effortlessly, and boost productivity with tools designed to
+        streamline your workflow. Whether you're scheduling
+        <span class="font_green">meetings, assigning tasks ,</span> or
+        <span class="font_green">tracking progress,</span> we’re here to help
+        you stay ahead. Log in to access your personalized dashboard and manage
+        your projects with ease."
+      </div>
+    </div>
+    <div class="form_div">
+      <form class="form">
+        <p class="form_title">Login</p>
+        <p class="form_text">Please enter your credentials to access</p>
+        <div class="floating_div">
+          <input
+            id="username"
+            name="username"
+            class="floating_input input"
+            type="text"
+            required
+          />
+          <label for="username" class="label">
+            <i class="fa-regular fa-user icon"></i>
+            <span>Username</span>
+          </label>
+        </div>
+        <div class="floating_div">
+          <input
+            id="password"
+            name="password"
+            class="floating_input input"
+            type="text"
+            required
+          />
+          <label for="password" class="label">
+            <i class="fa-solid fa-lock icon"></i>
+            <span>Password</span>
+          </label>
+        </div>
+        <button type="submit" class="submit_btn">Login</button>
+      </form>
+    </div>
+  </section>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #edf5ef;
+      font-family: "Rubik", sans-serif;
+    }
+    h1,
+    h2,
+    p {
+      margin: 0px;
+    }
+    .login_section {
+      display: flex;
+    }
+    .bg_img {
+      background-image: url(https://socialbuddies.co/assets/wp-content/uploads/2022/12/2.jpg);
+      width: 65%;
+      height: 100vh;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+    }
+    .bg_img::after {
+      position: absolute;
+      content: "";
+      height: 100%;
+      width: 100%;
+      background: #20313aeb;
+      top: 0;
+      left: 0;
+    }
+    .logo_div {
+      z-index: 1;
+      position: absolute;
+      padding: 25px;
+      text-align: center;
+    }
+    .task_icon {
+      width: 40px;
+    }
+    .task_master {
+      padding-top: 10px;
+      color: #fff;
+      font-size: 18px;
+    }
+    .text_para {
+      font-size: 20px;
+      color: #fff;
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 300;
+      width: 500px;
+      line-height: 30px;
+    }
+    .font_green {
+      color: #009b1c;
+    }
+    .form_div {
+      width: 35%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form {
+      width: 75%;
+    }
+    .form_title {
+      color: #20313a;
+      font-size: 36px;
+      font-weight: 600;
+    }
+    .form_text {
+      color: #6d6d6d;
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+    .floating_div {
+      position: relative;
+      background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+      font-family: "Rubik", sans-serif;
+      box-shadow: 2px 2px 5px 0px #d1d8d2e5 inset,
+        2px -2px 4px 0px #ffffffe5 inset, 2px -2px 4px 0px #d1d8d233 inset,
+        -2px 2px 4px 0px #d1d8d233 inset, -1px -1px 2px 0px #d1d8d280,
+        1px 1px 2px 0px #ffffff4d;
+      border: 1px solid #20313a33;
+      border-radius: 10px;
+      color: #20313a;
+      font-weight: 400;
+      font-size: 16px;
+      outline: none;
+      cursor: pointer;
+      padding: 13px 10px;
+      margin-bottom: 20px;
+    }
+    .floating_input {
+      font-size: 14px;
+      padding-top: 4px;
+      display: block;
+      width: 100%;
+      font-family: "Rubik", sans-serif;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+    }
+    .floating_input:valid {
+      outline: none;
+      margin-top: 15px;
+      color: #016d24;
+      font-size: 16px;
+      font-weight: 400;
+      padding-top: 10px;
+      font-family: "Rubik", sans-serif;
+    }
+    .input:focus {
+      margin-top: 25px;
+      margin-left: 5px;
+    }
+    .input:valid {
+      margin-top: 15px;
+      margin-left: 0px;
+    }
+    .label {
+      position: absolute;
+      pointer-events: none;
+      left: 15px;
+      top: 15px;
+      color: #20313a80;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .icon {
+      color: #000;
+      font-size: 16px;
+    }
+    .submit_btn {
+      cursor: pointer;
+      width: 100%;
+      background: #016d24;
+      color: white;
+      padding: 12px 0px;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 1px 1px 3px 0px rgba(0, 44, 14, 0.9),
+        -1px -1px 2px 0px rgba(2, 174, 58, 0.9),
+        1px -1px 2px 0px rgba(0, 44, 14, 0.2),
+        -1px 1px 2px 0px rgba(0, 44, 14, 0.2),
+        -1px -1px 2px 0px rgba(0, 44, 14, 0.5) inset,
+        1px 1px 2px 0px rgba(2, 174, 58, 0.3) inset;
+    }
+    .submit_btn:hover {
+      box-shadow: 1px 1px 5px rgba(0, 44, 14, 0.5);
+      transition: box-shadow 0.8s ease;
+    }
+
+    @media screen and (max-width: 992px) {
+      .login_section {
+        height: 100%;
+      }
+      .bg_img {
+        display: none;
+      }
+      .form_div {
+        width: 100%;
+        background: linear-gradient(#20313aeb, #20313aeb),
+          url(https://socialbuddies.co/assets/wp-content/uploads/2022/12/2.jpg);
+        background-position: center;
+        background-size: cover;
+      }
+      .form {
+        width: 60%;
+      }
+      .login_title {
+        color: #fff;
+      }
+      .login_text {
+        color: #c1c1c1;
+      }
+    }
+  </style>
+</body>

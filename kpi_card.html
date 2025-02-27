@@ -1,0 +1,111 @@
+<body>
+  <div class="kpi_card">
+    <div class="header">
+      <img src="./assets/kpi_icon.png" alt="kpi_icon" class="kpi_icon" />
+      <div class="kpi_title">KPI</div>
+    </div>
+    <div class="timeline">
+      <div class="timeline_item">
+        <div class="circle"></div>
+        <div class="content">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </div>
+      </div>
+      <div class="timeline_item">
+        <div class="circle"></div>
+        <div class="content">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </div>
+      </div>
+      <div class="timeline_item">
+        <div class="circle"></div>
+        <div class="content">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </div>
+      </div>
+      <div class="timeline_item">
+        <div class="circle"></div>
+        <div class="content">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    body {
+      margin: 0;
+      background-color: #edf5ef;
+      font-family: "Rubik", sans-serif;
+    }
+    h1,
+    h2,
+    p {
+      margin: 0px;
+    }
+    .kpi_card {
+      box-shadow: 5px 5px 13px 0px #d5dcd7e5, -5px -5px 10px 0px #ffffffe5,
+        5px -5px 10px 0px #d5dcd733, -5px 5px 10px 0px #d5dcd733,
+        -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+      background: linear-gradient(135deg, #f9fffb 100%, #e1e9e3 0%);
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+    }
+    .header {
+      background: #cde1d2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      width: fit-content;
+      padding: 7px 15px;
+      border-radius: 8px;
+    }
+    .kpi_icon {
+      width: 32px;
+    }
+    .kpi_title {
+      font-weight: 700;
+      color: #000;
+      font-size: 16px;
+    }
+    .timeline {
+      margin-top: 20px;
+      position: relative;
+    }
+    .timeline_item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .circle {
+      width: 10px;
+      height: 10px;
+      background-color: #20313a;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 5px;
+    }
+    .timeline_item .content {
+      padding-left: 20px;
+      font-size: 14px;
+      color: #000;
+      font-weight: 400;
+    }
+    .timeline_item:not(:last-child) .circle::after {
+      content: "";
+      width: 2px;
+      height: 45px;
+      background-color: #20313a;
+      position: absolute;
+      left: 4px;
+      top: 10px;
+    }
+  </style>
+</body>

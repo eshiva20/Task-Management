@@ -1,0 +1,79 @@
+<body>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <section class="repeat-frequency">
+    <h2 class="repeat-frequency-title">Repeat Frequency</h2>
+    <div class="frequency-lists">
+      <div class="single-frequency">Does not repeat</div>
+      <div class="single-frequency">Daily</div>
+      <div class="single-frequency">Weekly on Tuesday</div>
+      <div class="single-frequency">Monthly on second Tuesday</div>
+      <div class="single-frequency">Every weekday ( Monday to Friday)</div>
+    </div>
+    <button type="submit" class="submit-btn">Custom</button>
+  </section>
+  <style>
+    body {
+      margin: 0;
+      background-color: #edf5ef;
+      font-family: "Rubik", sans-serif;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin: 0;
+    }
+    .repeat-frequency {
+      background: #edf5ef;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .repeat-frequency-title {
+      color: #20313a;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .frequency-lists {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .single-frequency {
+      box-shadow: 1px -1px 3px 0px #ccd2cee5 inset,
+        -1px 1px 2px 0px #ffffffe5 inset, 1px 1px 2px 0px #ccd2ce33 inset,
+        -1px -1px 2px 0px #ccd2ce33 inset, -1px 1px 2px 0px #ccd2ce80,
+        1px -1px 2px 0px #ffffff4d;
+      background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+      border-radius: 10px;
+      padding: 10px;
+      color: #303030;
+      cursor: pointer;
+    }
+    .submit-btn {
+      width: 100%;
+      background: #016d24;
+      color: white;
+      padding: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+      text-align: left;
+    }
+  </style>
+  <script></script>
+</body>

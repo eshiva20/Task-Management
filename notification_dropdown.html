@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Notification Dropdown</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #edf5ef;
+        font-family: "Rubik", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        margin: 0;
+      }
+      .form-container {
+        background: #edf5ef;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .create-form-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .cross_icon {
+        font-size: 30px;
+        cursor: pointer;
+      }
+      .notification-counter-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .notification-counter-btn {
+        background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+        box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+          4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+          -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+        border: none;
+        border-radius: 6px;
+        padding: 11px 13px;
+        cursor: pointer;
+      }
+      .text-min {
+        color: #000;
+        font-size: 18px;
+        font-weight: 400;
+      }
+      .icon {
+        font-size: 24px;
+      }
+      .notification-counter-div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .notification-counter-num {
+        font-size: 30px;
+        font-weight: 700;
+        width: 40px;
+        text-align: center;
+        border: 1px solid #e1e1e1;
+        border-radius: 15px;
+        padding: 5px 15px;
+        color: #525252;
+      }
+      .submit-btn {
+        width: 100%;
+        background: #016d24;
+        color: white;
+        padding: 11px 0px;
+        font-weight: 600;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 3%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form>
+        <div class="create-form-title">
+          <h2>Notification</h2>
+          <i class="fa-solid fa-xmark cross_icon"></i>
+        </div>
+        <div class="notification-counter-section">
+          <p class="text-min">Minutes</p>
+          <div class="notification-counter-div">
+            <button
+              id="notification-decrement-btn"
+              class="notification-counter-btn"
+              type="button"
+            >
+              <i class="fa-solid fa-minus icon"></i>
+            </button>
+            <span id="notification-counter" class="notification-counter-num"
+              >1</span
+            >
+            <button
+              id="notification-increment-btn"
+              class="notification-counter-btn"
+              type="button"
+            >
+              <i class="fa-solid fa-plus icon"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Done</button>
+      </form>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const notificationCounterDisplay = document.getElementById(
+          "notification-counter"
+        );
+        const notificationIncrementBtn = document.getElementById(
+          "notification-increment-btn"
+        );
+        const notificationDecrementBtn = document.getElementById(
+          "notification-decrement-btn"
+        );
+
+        let notificationCounterValue = 1;
+
+        notificationIncrementBtn.addEventListener("click", function () {
+          notificationCounterValue++;
+          notificationCounterDisplay.textContent = notificationCounterValue;
+        });
+
+        notificationDecrementBtn.addEventListener("click", function () {
+          if (notificationCounterValue > 1) {
+            notificationCounterValue--;
+            notificationCounterDisplay.textContent = notificationCounterValue;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,941 @@
+<body>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <main class="kanban_view_main">
+    <h2 class="heading">Tasks List</h2>
+    <!-- filters for priority and type -->
+    <div class="filters">
+      <ul class="all_lists">
+        <li>All</li>
+        <!-- add class green to show it as selected -->
+        <li class="green">Ad Hoc</li>
+        <li>MOM</li>
+        <li>Project</li>
+      </ul>
+      <!-- priority buttons-->
+      <div class="priority_tabs">
+        <input
+          type="radio"
+          class="btn-check"
+          name="priority"
+          id="priority-all"
+          autocomplete="off"
+        />
+        <label class="btn btn-danger priority-btn" for="priority-all">
+          <i class="fa-solid fa-flag flag_icon"></i>All
+        </label>
+        <input
+          type="radio"
+          class="btn-check"
+          name="priority"
+          id="priority-high"
+          autocomplete="off"
+          checked
+        />
+        <label class="btn btn-danger priority-btn" for="priority-high">
+          <i class="fa-solid fa-flag flag_icon"></i>High
+        </label>
+
+        <input
+          type="radio"
+          class="btn-check"
+          name="priority"
+          id="priority-medium"
+          autocomplete="off"
+        />
+        <label
+          class="btn btn-outline-secondary priority-btn"
+          for="priority-medium"
+        >
+          <i class="fa-solid fa-flag flag_icon"></i>Medium
+        </label>
+
+        <input
+          type="radio"
+          class="btn-check"
+          name="priority"
+          id="priority-low"
+          autocomplete="off"
+        />
+        <label
+          class="btn btn-outline-secondary priority-btn"
+          for="priority-low"
+        >
+          <i class="fa-solid fa-flag flag_icon"></i>Low
+        </label>
+      </div>
+    </div>
+
+    <section class="kanban_view_section">
+      <div class="category">
+        <button class="category_btn">Not Started</button>
+        <div class="all_category_cards">
+          <!-- This is Single Card -->
+          <div class="category_card">
+            <div class="single_card">
+              <div class="task_header">
+                <span class="task_tag">Ad HOC</span>
+                <div class="more_actions">
+                  <div class="comment">
+                    <img
+                      src="./assets/comment_icon.png"
+                      alt="comment_icon"
+                      class="comment_img"
+                    />
+                  </div>
+                  <i class="fa-solid fa-ellipsis-vertical dots"></i>
+                </div>
+              </div>
+              <div class="task_subHeader">
+                <div class="priority_label high label">
+                  <i class="fa-solid fa-flag flag_icon"></i> High
+                </div>
+                <div class="open_label label">
+                  <img
+                    src="./assets/dashed_circle.png"
+                    alt="circle_icon"
+                    class="circle_icon header_img"
+                  />Open
+                </div>
+              </div>
+              <!-- Add class hidden to hide the extra lables that would be only visible when clicked for show more lables -->
+              <div class="extra_labels hidden">
+                <div class="department_label label">
+                  <img
+                    src="./assets/department.png"
+                    alt="department"
+                    class="attachment_icon header_img"
+                  />Department-Finance
+                </div>
+                <div class="attachment_label label">
+                  <img
+                    src="./assets/attachment_icon.png"
+                    alt="Attachment_icon"
+                    class="attachment_icon header_img"
+                  />2 Attachement
+                </div>
+                <div class="activity_label label">
+                  <img
+                    src="./assets/activity_icon.png"
+                    alt="activity_icon"
+                    class="activity_icon header_img"
+                  />Last Activity
+                  <img
+                    src="./assets/info_icon.png"
+                    alt="Info_icon"
+                    class="info_icon header_img"
+                  />
+                </div>
+                <!-- add class selected_employee_label to show it as highlighted  -->
+                <div class="employee_label label">
+                  <img
+                    src="./assets/employee_icon.png"
+                    alt="employee_icon"
+                    class="employee_icon header_img"
+                  />Anusha- On hold
+                </div>
+                <div class="attachment_label label">
+                  <img
+                    src="./assets/tcf.png"
+                    alt="department"
+                    class="attachment_icon header_img"
+                  />TCF-Production
+                </div>
+              </div>
+              <div class="hide_labels_line">
+                <hr />
+                <!-- use class arrow_icon to show the icon that labels are closed -->
+                <!-- use class arrow_icon_open to show the icon that labels are open  -->
+                <i class="fa-solid fa-chevron-down arrow_icon_open"></i>
+              </div>
+              <div class="task_body">
+                <div>
+                  <p class="input_label fz-14">Task name</p>
+                  <p class="input_value fz-14">Make changes in HR team</p>
+                </div>
+                <div>
+                  <p class="input_label fz-12">Assigned to</p>
+                  <p class="input_value fz-14">Anusha Bhardwaj</p>
+                </div>
+                <div class="dates_fields">
+                  <div>
+                    <p class="input_label fz-12">Start date</p>
+                    <p class="input_value fz-14">17 Sep,2024</p>
+                  </div>
+                  <div>
+                    <p class="input_label fz-12">End date</p>
+                    <p class="input_value fz-14">19 Sep,2024</p>
+                  </div>
+                </div>
+                <div>
+                  <p class="input_label comment_text fz-14">Comment</p>
+                  <p class="input_value write_comment fz-14">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <span> Write a comment</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button class="subtask_btn">
+              <img
+                src="./assets/subtask_icon.png"
+                class="subTask_icon"
+                alt="subTask_icon"
+              /><span>2 Sub task</span>
+              <!-- use class subtask_btn_arrow_icon to show subtasks are closed -->
+              <!-- use class subtask_btn_arrow_icon_open to show subtasks are open   -->
+              <i class="fa-solid fa-angle-down subtask_btn_arrow_icon_open"></i>
+            </button>
+            <div class="single_subcard">
+              <div class="task_header">
+                <span class="task_tag">Ad HOC</span>
+                <div class="more_actions">
+                  <div class="comment">
+                    <img
+                      src="./assets/comment_icon.png"
+                      alt="comment_icon"
+                      class="comment_img"
+                    />
+                  </div>
+                  <i class="fa-solid fa-ellipsis-vertical dots"></i>
+                </div>
+              </div>
+              <div class="task_subHeader">
+                <div class="priority_label high label">
+                  <i class="fa-solid fa-flag flag_icon"></i> High
+                </div>
+                <div class="open_label label">
+                  <img
+                    src="./assets/dashed_circle.png"
+                    alt="circle_icon"
+                    class="circle_icon header_img"
+                  />Open
+                </div>
+              </div>
+              <div class="hide_labels_line">
+                <hr />
+                <i class="fa-solid fa-chevron-down arrow_icon"></i>
+              </div>
+              <div class="task_body">
+                <div>
+                  <p class="input_label fz-14">Task name</p>
+                  <p class="input_value fz-14">Make changes in HR team</p>
+                </div>
+                <div>
+                  <p class="input_label fz-12">Assigned to</p>
+                  <p class="input_value fz-14">Anusha Bhardwaj</p>
+                </div>
+                <div class="dates_fields">
+                  <div>
+                    <p class="input_label fz-12">Start date</p>
+                    <p class="input_value fz-14">17 Sep,2024</p>
+                  </div>
+                  <div>
+                    <p class="input_label fz-12">End date</p>
+                    <p class="input_value fz-14">19 Sep,2024</p>
+                  </div>
+                </div>
+                <div>
+                  <p class="input_label comment_text fz-14">Comment</p>
+                  <p class="input_value write_comment fz-14">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <span> Write a comment</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="single_subcard">
+              <div class="task_header">
+                <span class="task_tag">Ad HOC</span>
+                <div class="more_actions">
+                  <div class="comment">
+                    <img
+                      src="./assets/comment_icon.png"
+                      alt="comment_icon"
+                      class="comment_img"
+                    />
+                  </div>
+                  <i class="fa-solid fa-ellipsis-vertical dots"></i>
+                </div>
+              </div>
+              <div class="task_subHeader">
+                <div class="priority_label high label">
+                  <i class="fa-solid fa-flag flag_icon"></i> High
+                </div>
+                <div class="open_label label">
+                  <img
+                    src="./assets/dashed_circle.png"
+                    alt="circle_icon"
+                    class="circle_icon header_img"
+                  />Open
+                </div>
+              </div>
+              <div class="hide_labels_line">
+                <hr />
+                <i class="fa-solid fa-chevron-down arrow_icon"></i>
+              </div>
+              <div class="task_body">
+                <div>
+                  <p class="input_label fz-14">Task name</p>
+                  <p class="input_value fz-14">Make changes in HR team</p>
+                </div>
+                <div>
+                  <p class="input_label fz-12">Assigned to</p>
+                  <p class="input_value fz-14">Anusha Bhardwaj</p>
+                </div>
+                <div class="dates_fields">
+                  <div>
+                    <p class="input_label fz-12">Start date</p>
+                    <p class="input_value fz-14">17 Sep,2024</p>
+                  </div>
+                  <div>
+                    <p class="input_label fz-12">End date</p>
+                    <p class="input_value fz-14">19 Sep,2024</p>
+                  </div>
+                </div>
+                <div>
+                  <p class="input_label comment_text fz-14">Comment</p>
+                  <p class="input_value write_comment fz-14">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <span> Write a comment</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- This is next single Card -->
+          <div class="category_card">
+            <div class="single_card">
+              <div class="task_header">
+                <span class="task_tag">Ad HOC</span>
+                <div class="more_actions">
+                  <div class="comment">
+                    <img
+                      src="./assets/comment_icon.png"
+                      alt="comment_icon"
+                      class="comment_img"
+                    />
+                  </div>
+                  <i class="fa-solid fa-ellipsis-vertical dots"></i>
+                </div>
+              </div>
+              <div class="task_subHeader">
+                <div class="priority_label high label">
+                  <i class="fa-solid fa-flag flag_icon"></i> High
+                </div>
+                <div class="open_label label">
+                  <img
+                    src="./assets/dashed_circle.png"
+                    alt="circle_icon"
+                    class="circle_icon header_img"
+                  />Open
+                </div>
+              </div>
+              <!-- Add class hidden to hide the extra lables that would be only visible when clicked for show more lables -->
+              <div class="extra_labels hidden">
+                <div class="department_label label">
+                  <img
+                    src="./assets/department.png"
+                    alt="department"
+                    class="attachment_icon header_img"
+                  />Department-Finance
+                </div>
+                <div class="attachment_label label">
+                  <img
+                    src="./assets/attachment_icon.png"
+                    alt="Attachment_icon"
+                    class="attachment_icon header_img"
+                  />2 Attachement
+                </div>
+                <div class="activity_label label">
+                  <img
+                    src="./assets/activity_icon.png"
+                    alt="activity_icon"
+                    class="activity_icon header_img"
+                  />Last Activity
+                  <img
+                    src="./assets/info_icon.png"
+                    alt="Info_icon"
+                    class="info_icon header_img"
+                  />
+                </div>
+                <!-- add class selected_employee_label to show it as highlighted  -->
+                <div class="employee_label label">
+                  <img
+                    src="./assets/employee_icon.png"
+                    alt="employee_icon"
+                    class="employee_icon header_img"
+                  />Anusha- On hold
+                </div>
+                <div class="attachment_label label">
+                  <img
+                    src="./assets/tcf.png"
+                    alt="department"
+                    class="attachment_icon header_img"
+                  />TCF-Production
+                </div>
+              </div>
+              <div class="hide_labels_line">
+                <hr />
+                <!-- use class arrow_icon to show the icon that labels are closed -->
+                <!-- use class arrow_icon_open to show the icon that labels are open  -->
+                <i class="fa-solid fa-chevron-down arrow_icon_open"></i>
+              </div>
+              <div class="task_body">
+                <div>
+                  <p class="input_label fz-14">Task name</p>
+                  <p class="input_value fz-14">Make changes in HR team</p>
+                </div>
+                <div>
+                  <p class="input_label fz-12">Assigned to</p>
+                  <p class="input_value fz-14">Anusha Bhardwaj</p>
+                </div>
+                <div class="dates_fields">
+                  <div>
+                    <p class="input_label fz-12">Start date</p>
+                    <p class="input_value fz-14">17 Sep,2024</p>
+                  </div>
+                  <div>
+                    <p class="input_label fz-12">End date</p>
+                    <p class="input_value fz-14">19 Sep,2024</p>
+                  </div>
+                </div>
+                <div>
+                  <p class="input_label comment_text fz-14">Comment</p>
+                  <p class="input_value write_comment fz-14">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <span> Write a comment</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button class="subtask_btn">
+              <img
+                src="./assets/subtask_icon.png"
+                class="subTask_icon"
+                alt="subTask_icon"
+              /><span>2 Sub task</span>
+              <!-- use class subtask_btn_arrow_icon to show subtasks are closed -->
+              <!-- use class subtask_btn_arrow_icon_open to show subtasks are open   -->
+              <i class="fa-solid fa-angle-down subtask_btn_arrow_icon_open"></i>
+            </button>
+            <div class="single_subcard">
+              <div class="task_header">
+                <span class="task_tag">Ad HOC</span>
+                <div class="more_actions">
+                  <div class="comment">
+                    <img
+                      src="./assets/comment_icon.png"
+                      alt="comment_icon"
+                      class="comment_img"
+                    />
+                  </div>
+                  <i class="fa-solid fa-ellipsis-vertical dots"></i>
+                </div>
+              </div>
+              <div class="task_subHeader">
+                <div class="priority_label high label">
+                  <i class="fa-solid fa-flag flag_icon"></i> High
+                </div>
+                <div class="open_label label">
+                  <img
+                    src="./assets/dashed_circle.png"
+                    alt="circle_icon"
+                    class="circle_icon header_img"
+                  />Open
+                </div>
+              </div>
+              <div class="hide_labels_line">
+                <hr />
+                <i class="fa-solid fa-chevron-down arrow_icon"></i>
+              </div>
+              <div class="task_body">
+                <div>
+                  <p class="input_label fz-14">Task name</p>
+                  <p class="input_value fz-14">Make changes in HR team</p>
+                </div>
+                <div>
+                  <p class="input_label fz-12">Assigned to</p>
+                  <p class="input_value fz-14">Anusha Bhardwaj</p>
+                </div>
+                <div class="dates_fields">
+                  <div>
+                    <p class="input_label fz-12">Start date</p>
+                    <p class="input_value fz-14">17 Sep,2024</p>
+                  </div>
+                  <div>
+                    <p class="input_label fz-12">End date</p>
+                    <p class="input_value fz-14">19 Sep,2024</p>
+                  </div>
+                </div>
+                <div>
+                  <p class="input_label comment_text fz-14">Comment</p>
+                  <p class="input_value write_comment fz-14">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <span> Write a comment</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="single_subcard">
+              <div class="task_header">
+                <span class="task_tag">Ad HOC</span>
+                <div class="more_actions">
+                  <div class="comment">
+                    <img
+                      src="./assets/comment_icon.png"
+                      alt="comment_icon"
+                      class="comment_img"
+                    />
+                  </div>
+                  <i class="fa-solid fa-ellipsis-vertical dots"></i>
+                </div>
+              </div>
+              <div class="task_subHeader">
+                <div class="priority_label high label">
+                  <i class="fa-solid fa-flag flag_icon"></i> High
+                </div>
+                <div class="open_label label">
+                  <img
+                    src="./assets/dashed_circle.png"
+                    alt="circle_icon"
+                    class="circle_icon header_img"
+                  />Open
+                </div>
+              </div>
+              <div class="hide_labels_line">
+                <hr />
+                <i class="fa-solid fa-chevron-down arrow_icon"></i>
+              </div>
+              <div class="task_body">
+                <div>
+                  <p class="input_label fz-14">Task name</p>
+                  <p class="input_value fz-14">Make changes in HR team</p>
+                </div>
+                <div>
+                  <p class="input_label fz-12">Assigned to</p>
+                  <p class="input_value fz-14">Anusha Bhardwaj</p>
+                </div>
+                <div class="dates_fields">
+                  <div>
+                    <p class="input_label fz-12">Start date</p>
+                    <p class="input_value fz-14">17 Sep,2024</p>
+                  </div>
+                  <div>
+                    <p class="input_label fz-12">End date</p>
+                    <p class="input_value fz-14">19 Sep,2024</p>
+                  </div>
+                </div>
+                <div>
+                  <p class="input_label comment_text fz-14">Comment</p>
+                  <p class="input_value write_comment fz-14">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <span> Write a comment</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="category">
+        <button class="category_btn">In Progress</button>
+        <div class="all_category_cards">
+          <!-- Add the single Card UI here it would be the same  -->
+        </div>
+      </div>
+      <div class="category">
+        <button class="category_btn">Completed</button>
+        <div class="all_category_cards">
+          <!-- Add the single Card UI here it would be the same  -->
+        </div>
+      </div>
+      <div class="category">
+        <button class="category_btn">On Hold</button>
+        <div class="all_category_cards">
+          <!-- Add the single Card UI here it would be the same  -->
+        </div>
+      </div>
+      <div class="category">
+        <button class="category_btn">Review Pending</button>
+        <div class="all_category_cards">
+          <!-- Add the single Card UI here it would be the same  -->
+        </div>
+      </div>
+      <div class="category">
+        <button class="category_btn">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input custom_switch"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckChecked"
+            />
+          </div>
+          <span> View Archive Only </span>
+        </button>
+        <div class="all_category_cards">
+          <!-- Add the single Card UI here it would be the same  -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Rubik", sans-serif;
+      background-color: #edf5ef;
+    }
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+    .kanban_view_main {
+      padding: 5px;
+    }
+    .all_lists {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      margin: 5px 0px;
+      padding-left: 25px;
+    }
+    .all_lists li {
+      color: #00000066;
+      font-size: 16px;
+      position: relative;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .all_lists li::after {
+      transform: translate(-50%, 0px);
+      content: "";
+      position: absolute;
+      height: 1.5px;
+      width: 55px;
+      background: #00000066;
+      bottom: 0px;
+      left: 50%;
+      border-radius: 5px;
+    }
+    .filters {
+      display: flex;
+      justify-content: space-between;
+    }
+    .green {
+      color: #009b1c !important;
+    }
+    .green::after {
+      background-color: #009b1c !important;
+    }
+    .priority_tabs {
+      border: 1px solid #5b6971;
+      border-radius: 7px;
+      display: flex;
+      margin-left: auto;
+      height: 30px;
+    }
+    .priority-btn {
+      transition: background-color 0.1s ease;
+      border: none;
+      outline: none;
+      border-radius: 0px;
+      font-size: 14px;
+      padding: 5px 12px;
+    }
+    #priority-all:checked + .priority-btn {
+      border-radius: 6px 0px 0px 6px;
+      background-color: #02ae3b;
+    }
+    #priority-high + .priority-btn {
+      border-left: 1px solid #5b6971;
+    }
+    #priority-high:checked + .priority-btn {
+      background-color: #ee0000;
+      color: white;
+    }
+    #priority-medium + .priority-btn {
+      border-right: 1px solid #5b6971;
+      border-left: 1px solid #5b6971;
+    }
+    #priority-medium:checked + .priority-btn {
+      background-color: #005bff;
+      color: white;
+      border-right: 1px solid #5b6971;
+      border-left: 1px solid #5b6971;
+    }
+    #priority-low:checked + .priority-btn {
+      background-color: #f5a200;
+      color: white;
+      border-radius: 0px 6px 6px 0px;
+    }
+    input[type="radio"]:not(:checked) + .priority-btn {
+      background-color: transparent;
+      color: #6c757d;
+    }
+    .heading {
+      font-size: 20px;
+      font-weight: 600;
+      color: #000;
+      padding: 0px 5px;
+    }
+    .custom_switch:checked {
+      background-color: transparent;
+      border-color: #000;
+      cursor: pointer;
+      outline: none;
+    }
+    .custom_switch:focus {
+      box-shadow: none;
+    }
+    .custom_switch:checked::before {
+      background-color: #fff;
+    }
+    .kanban_view_section {
+      display: flex;
+      gap: 10px;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      padding-bottom: 5px;
+    }
+    .category {
+      min-width: calc(320px - 10px);
+      height: calc(100vh - 82px);
+      padding: 5px;
+    }
+    .category_btn {
+      background: #d4d4d4;
+      color: #000000;
+      font-family: "Rubik", sans-serif;
+      font-weight: 400;
+      border-radius: 10px;
+      padding: 10px;
+      width: 100%;
+      outline: none;
+      border: none;
+      font-size: 16px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .all_category_cards {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      overflow-y: auto;
+      height: calc(100% - 50px);
+      padding-right: 5px;
+    }
+    .category_card {
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #009b1c4d;
+      box-shadow: 5px 5px 13px 0px #ccd2cee5, -5px -5px 10px 0px #ffffffe5,
+        5px -5px 10px 0px #ccd2ce33, -5px 5px 10px 0px #ccd2ce33,
+        -1px -1px 2px 0px #ccd2ce80 inset, 1px 1px 2px 0px #ffffff4d inset;
+      background: linear-gradient(135deg, #f9fffb 100%, #e1e8e3 0%);
+    }
+    .task_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .task_tag {
+      background: #02ae3a4d;
+      clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 85% 50%, 100% 0%);
+      color: #171b21;
+      padding: 3px 20px 3px 10px;
+      font-size: 12px;
+    }
+    .more_actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+    .comment {
+      box-shadow: 1px 1px 3px 0px #b0b0b0e5, -1px -1px 2px 0px #ffffffe5,
+        1px -1px 2px 0px #b0b0b033, -1px 1px 2px 0px #b0b0b033,
+        -1px -1px 2px 0px #b0b0b080 inset, 1px 1px 2px 0px #ffffff4d inset;
+      background: linear-gradient(135deg, #ffffff 0%, #e8e8e8 100%);
+      padding: 5px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .dots {
+      font-size: 20px;
+      color: #727272;
+      cursor: pointer;
+    }
+    .comment_img {
+      width: 17px;
+    }
+    .task_subHeader {
+      display: flex;
+      gap: 10px;
+    }
+    .flag_icon {
+      font-size: 12px;
+      padding-right: 4px;
+    }
+    .extra_labels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+      margin-top: 15px;
+    }
+    .hidden {
+      display: none;
+    }
+    .department_label {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    .circle_icon,
+    .header_img {
+      width: 14px;
+    }
+    .label {
+      background: #e2e2e2;
+      border-radius: 8px;
+      padding: 2px 7px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .employee_label {
+      background: #ffedb8;
+    }
+    .high {
+      background: #ee0000;
+      color: #ffffff;
+    }
+    .medium {
+      background: #0000ff;
+      color: #fff;
+    }
+    .low {
+      background: #ff9900;
+      color: #fff;
+    }
+    .hide_labels_line {
+      position: relative;
+      margin-top: 20px;
+    }
+    .arrow_icon,
+    .arrow_icon_open {
+      background: #bcd5c4;
+      font-size: 12px;
+      padding: 5px;
+      border-radius: 50px;
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+    .arrow_icon_open {
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+    .task_body {
+      display: grid;
+      gap: 10px;
+    }
+    .fz-12 {
+      font-size: 12px;
+    }
+    .fz-14 {
+      font-size: 14px;
+    }
+    .input_label {
+      color: #525252;
+      font-weight: 400;
+      line-height: 12px;
+    }
+    .input_value {
+      color: #20313a;
+      font-weight: 500;
+    }
+    .dates_fields {
+      display: flex;
+      gap: 50px;
+    }
+    .write_comment {
+      color: #009b1c;
+      text-decoration: underline;
+    }
+    .subtask_btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      background-color: #cde4d4;
+      outline: none;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 10px;
+      color: #303030;
+      font-size: 14px;
+      margin: 10px 0px;
+    }
+    .subtask_btn_arrow_icon,
+    .subtask_btn_arrow_icon_open {
+      margin-left: auto;
+    }
+    .subtask_btn_arrow_icon_open {
+      transform: rotate(180deg);
+    }
+    .subTask_icon {
+      width: 15px;
+    }
+    .single_subcard {
+      background: #cde4d4;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .all_category_cards::-webkit-scrollbar {
+      width: 5px;
+      background-color: #d9d9d9;
+      border-radius: 50px;
+    }
+    .all_category_cards::-webkit-scrollbar-thumb {
+      background-color: #8a8a8a;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+    .kanban_view_section::-webkit-scrollbar {
+      height: 8px;
+      background-color: #d9d9d9;
+      border-radius: 50px;
+    }
+    .kanban_view_section::-webkit-scrollbar-thumb {
+      background-color: #8a8a8a;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+  </style>
+</body>

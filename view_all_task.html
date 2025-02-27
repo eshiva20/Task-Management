@@ -1,0 +1,627 @@
+<body>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <section class="view_all_task">
+    <div class="view_all_task_title">
+      <div class="date_details">
+        <p class="meeting_date_text">Meeting date</p>
+        <span class="meeting_date">16 Aug,2024</span
+        ><span class="meeting_day">Tuesday</span>
+      </div>
+      <button class="add_task">Add Task</button>
+    </div>
+    <div class="all_tasks">
+      <div class="single_task">
+        <div class="task">
+          <div>
+            <div class="task_name_detail">
+              <div>
+                <p class="small_text pl20">Task name</p>
+                <div class="task_title_div">
+                  <div class="point red task_point">
+                    <i class="fa-solid fa-circle inner_circle"></i>
+                    <i class="fa-regular fa-circle outer_circle"></i>
+                  </div>
+                  <h3 class="task_title">
+                    Check “Task Master” for high-priority projects
+                  </h3>
+                </div>
+              </div>
+              <button class="view_and_edit">View & Edit</button>
+            </div>
+
+            <p class="small_text pl20">Description</p>
+            <p class="task_description">
+              "Review the 'Task Master' dashboard for any high-priority projects
+              or tasks that require immediate attention.
+            </p>
+          </div>
+
+          <div class="selection_section">
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Assigned to</p>
+              <select class="assigned_select" name="" id="" disabled>
+                <option value="Aakash">Aakash</option>
+                <option value="JD">JD</option>
+                <option value="Rishi">Rishi</option>
+                <option value="Shiva">Shiva</option>
+              </select>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Start date</p>
+              <p class="selection_div_value">
+                <i class="fa-regular fa-calendar icon"></i>
+                <input
+                  class="assigned_select"
+                  type="text"
+                  id="datetime-picker-input"
+                  placeholder="16 August"
+                  disabled
+                />
+              </p>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">End date</p>
+              <p class="selection_div_value">
+                <i class="fa-regular fa-calendar icon"></i>
+                <input
+                  disabled
+                  class="assigned_select"
+                  type="text"
+                  placeholder="19 August"
+                />
+              </p>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Priority</p>
+              <div class="flag_div">
+                <i class="fa-solid fa-flag red"></i>
+                <select class="assigned_select" disabled>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subtask_line">
+          <hr />
+          <button class="subtask_btn">
+            <img
+              src="./assets/subtask_icon.png"
+              class="subTask_icon"
+              alt="subTask_icon"
+            /><span>Sub task</span><i class="fa-solid fa-angle-up"></i>
+          </button>
+          <hr />
+        </div>
+        <div class="subtask">
+          <div>
+            <div class="task_name_detail">
+              <div>
+                <p class="small_text pl20">Task name</p>
+                <div class="task_title_div">
+                  <div class="point blue subtask_point">
+                    <i class="fa-solid fa-circle inner_circle"></i>
+                    <i class="fa-regular fa-circle outer_circle"></i>
+                  </div>
+                  <h3 class="task_title">
+                    Check “Task Master” for high-priority projects
+                  </h3>
+                </div>
+              </div>
+              <button class="view_and_edit">View & Edit</button>
+            </div>
+            <p class="small_text pl20">Description</p>
+            <p class="task_description">
+              "Review the 'Task Master' dashboard for any high-priority projects
+              or tasks that require immediate attention.
+            </p>
+          </div>
+
+          <div class="selection_section">
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Assigned to</p>
+              <select class="assigned_select" name="" id="" disabled>
+                <option value="Aakash">Aakash</option>
+                <option value="JD">JD</option>
+                <option value="Rishi">Rishi</option>
+                <option value="Shiva">Shiva</option>
+              </select>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Start date</p>
+              <p class="selection_div_value">
+                <i class="fa-regular fa-calendar icon"></i>
+                <input
+                  class="assigned_select"
+                  type="text"
+                  id="datetime-picker-input"
+                  placeholder="16 August"
+                  disabled
+                />
+              </p>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">End date</p>
+              <p class="selection_div_value">
+                <i class="fa-regular fa-calendar icon"></i>
+                <input
+                  disabled
+                  class="assigned_select"
+                  type="text"
+                  placeholder="19 August"
+                />
+              </p>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Priority</p>
+              <div class="flag_div">
+                <i class="fa-solid fa-flag blue"></i>
+                <select class="assigned_select" disabled>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="add_sub_task">
+          <i class="fa-solid fa-plus plus_icon"></i><span>Add Sub Task</span>
+        </button>
+      </div>
+
+      <div class="single_task">
+        <div class="task">
+          <div>
+            <div class="task_name_detail">
+              <div>
+                <p class="small_text pl20">Task name</p>
+                <div class="task_title_div">
+                  <div class="point blue">
+                    <i class="fa-solid fa-circle inner_circle"></i>
+                    <i class="fa-regular fa-circle outer_circle"></i>
+                  </div>
+                  <h3 class="task_title">
+                    Analyze Operational Costs Breakdown
+                  </h3>
+                </div>
+              </div>
+              <button class="view_and_edit">View & Edit</button>
+            </div>
+
+            <p class="small_text pl20">Description</p>
+            <p class="task_description">
+              "Evaluate and discuss the necessary operational costs, including
+              employee salaries, utility expenses, and essential services such
+              as software subscriptions or equipment maintenance.
+            </p>
+          </div>
+
+          <div class="selection_section">
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Assigned to</p>
+              <select class="assigned_select" name="" id="" disabled>
+                <option value="Shiva">Anusha</option>
+                <option value="Aakash">Aakash</option>
+                <option value="JD">JD</option>
+                <option value="Rishi">Rishi</option>
+                <option value="Shiva">Shiva</option>
+              </select>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Start date</p>
+              <p class="selection_div_value">
+                <i class="fa-regular fa-calendar icon"></i>
+                <input
+                  class="assigned_select"
+                  type="text"
+                  id="datetime-picker-input"
+                  placeholder="16 August"
+                  disabled
+                />
+              </p>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">End date</p>
+              <p class="selection_div_value">
+                <i class="fa-regular fa-calendar icon"></i>
+                <input
+                  disabled
+                  class="assigned_select"
+                  type="text"
+                  placeholder="19 August"
+                />
+              </p>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Priority</p>
+              <div class="flag_div">
+                <i class="fa-solid fa-flag blue"></i>
+                <select class="assigned_select" disabled>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subtask_line subtask_disabled_subtask_line">
+          <hr />
+          <button class="subtask_btn">
+            <img
+              src="./assets/subtask_icon.png"
+              class="subTask_icon"
+              alt="subTask_icon"
+            /><span>Sub task</span><i class="fa-solid fa-angle-down"></i>
+          </button>
+          <hr />
+        </div>
+      </div>
+
+      <div class="single_task">
+        <div class="task">
+          <div>
+            <div class="task_name_detail">
+              <div>
+                <p class="small_text pl20">Task name</p>
+                <div class="task_title_div">
+                  <div class="point yellow">
+                    <i class="fa-solid fa-circle inner_circle"></i>
+                    <i class="fa-regular fa-circle outer_circle"></i>
+                  </div>
+                  <h3 class="task_title">
+                    Plan Marketing and Sales Budget Allocation
+                  </h3>
+                </div>
+              </div>
+              <button class="view_and_edit">View & Edit</button>
+            </div>
+
+            <p class="small_text pl20">Description</p>
+            <p class="task_description">
+              "Determine the budget allocation for upcoming marketing campaigns,
+              sales initiatives, and customer acquisition efforts.
+            </p>
+          </div>
+
+          <div class="selection_section">
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Assigned to</p>
+              <select class="assigned_select" name="" id="" disabled>
+                <option value="Shiva">Anusha</option>
+                <option value="Aakash">Aakash</option>
+                <option value="JD">JD</option>
+                <option value="Rishi">Rishi</option>
+                <option value="Shiva">Shiva</option>
+              </select>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Start date</p>
+              <p class="selection_div_value">
+                <i class="fa-regular fa-calendar icon"></i>
+                <input
+                  class="assigned_select"
+                  type="text"
+                  id="datetime-picker-input"
+                  placeholder="16 August"
+                  disabled
+                />
+              </p>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">End date</p>
+              <p class="selection_div_value">
+                <i class="fa-regular fa-calendar icon"></i>
+                <input
+                  disabled
+                  class="assigned_select"
+                  type="text"
+                  placeholder="19 August"
+                />
+              </p>
+            </div>
+            <div class="selection_div">
+              <p class="small_text selection_div_title">Priority</p>
+              <div class="flag_div">
+                <i class="fa-solid fa-flag yellow"></i>
+                <select class="assigned_select" disabled>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="subtask_line subtask_disabled_subtask_line">
+          <hr />
+          <button class="subtask_btn">
+            <img
+              src="./assets/subtask_icon.png"
+              class="subTask_icon"
+              alt="subTask_icon"
+            /><span>Sub task</span><i class="fa-solid fa-angle-down"></i>
+          </button>
+          <hr />
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Rubik", sans-serif;
+    }
+    p,
+    h3 {
+      margin: 0;
+    }
+    .view_all_task {
+      box-shadow: 5px 5px 13px 0px #d5dcd7e5, -5px -5px 10px 0px #ffffffe5,
+        5px -5px 10px 0px #d5dcd733, -5px 5px 10px 0px #d5dcd733,
+        -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+      border: 0.5px solid #fff;
+      background-color: #edf5ef;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .view_all_task_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #555;
+    }
+    .meeting_date_text {
+      color: #525252;
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .meeting_date {
+      font-size: 20px;
+      color: #000;
+      font-weight: 600;
+    }
+    .meeting_day {
+      font-size: 14px;
+      font-weight: 400;
+      color: #000;
+      margin-left: 8px;
+    }
+    .add_task {
+      font-family: "Rubik", sans-serif;
+      background: #016d24;
+      box-shadow: 1px 1px 3px 0px #002c0ee5, -1px -1px 2px 0px #02ae3ae5,
+        1px -1px 2px 0px #002c0e33, -1px 1px 2px 0px #002c0e33,
+        -1px -1px 2px 0px #002c0e80 inset, 1px 1px 2px 0px #02ae3a4d inset;
+      outline: none;
+      border: none;
+      border-radius: 7px;
+      padding: 7px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #fff;
+    }
+    .single_task {
+      position: relative;
+      padding: 15px;
+      border: 1px solid #585e67;
+      margin: 10px 0px 25px 0px;
+      background: #dfece3;
+      border-radius: 8px;
+    }
+
+    .task,
+    .subtask {
+      padding-bottom: 15px;
+    }
+    .subtask {
+      margin: 15px;
+      padding: 10px 20px;
+      background: #cde4d4;
+      border-radius: 8px;
+    }
+    .subtask_line,
+    .subtask_disabled_subtask_line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .subtask_disabled_subtask_line {
+      position: absolute;
+      width: 98%;
+      bottom: -13.5px;
+
+      hr {
+        height: 0.9px;
+        background: #585e67;
+        border: none;
+      }
+    }
+    .subtask_btn {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      gap: 10px;
+      background-color: #cde4d4;
+      outline: none;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #303030;
+      font-size: 14px;
+    }
+    .subTask_icon {
+      width: 15px;
+    }
+    hr {
+      width: 43%;
+    }
+    hr:nth-child(1) {
+      margin-right: initial;
+    }
+    hr:last-child {
+      margin-left: initial;
+    }
+    .task_name_detail {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .view_and_edit {
+      color: #016d24;
+      border: none;
+      outline: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 400;
+      font-family: "Rubik", sans-serif;
+      box-shadow: 1px 1px 3px 0px #b0b0b0e5, -1px -1px 2px 0px #ffffffe5,
+        1px -1px 2px 0px #b0b0b033, -1px 1px 2px 0px #b0b0b033,
+        -1px -1px 2px 0px #b0b0b080 inset, 1px 1px 2px 0px #ffffff4d inset;
+      background: linear-gradient(135deg, #ffffff 100%, #e8e8e8 0%);
+      cursor: pointer;
+    }
+    .pl20 {
+      padding-left: 20px;
+    }
+    .small_text {
+      color: #525252;
+      font-size: 12px;
+    }
+    .task_title_div {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 10px;
+    }
+    .point {
+      position: relative;
+      z-index: 99;
+      .inner_circle {
+        font-size: 12px;
+      }
+      .outer_circle {
+        position: absolute;
+        top: -3.02px;
+        left: -3px;
+        font-size: 18px;
+      }
+    }
+    .task_point {
+      &:after {
+        position: absolute;
+        content: "";
+        width: 1px;
+        background-color: #aaaaaa;
+        height: 188px;
+        top: 14px;
+        left: 5px;
+        z-index: -1;
+      }
+    }
+    .subtask_point {
+      &:before {
+        position: absolute;
+        content: "";
+        width: 40px;
+        background-color: #aaaaaa;
+        height: 0.6px;
+        top: 6px;
+        right: 1px;
+        z-index: -1;
+      }
+    }
+
+    .task_title {
+      color: #20313a;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .red {
+      color: #ee0000;
+    }
+    .blue {
+      color: #0000ff;
+    }
+    .yellow {
+      color: #ff9900;
+    }
+    .flag_div {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .task_description {
+      color: #525252;
+      font-weight: 500;
+      font-size: 14px;
+      padding-left: 20px;
+      padding-top: 2px;
+    }
+    .selection_section {
+      padding-left: 20px;
+      padding-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    .selection_div {
+      width: 100px;
+    }
+    .selection_div_title {
+      margin-bottom: 3px;
+    }
+    .assigned_select {
+      border: none;
+      background: transparent;
+      outline: none;
+      cursor: pointer;
+      color: #303030;
+    }
+    .selection_div_value {
+      color: #303030;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .icon {
+      cursor: pointer;
+    }
+    .add_sub_task {
+      color: #009b1c;
+      border: none;
+      outline: none;
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      font-size: 16px;
+      margin-left: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: "Rubik", sans-serif;
+      background-color: transparent;
+    }
+    .plus_icon {
+      border: 1.5px solid #009b1c;
+      padding: 2px 3px 2px 3px;
+      font-size: 14px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+  </style>
+</body>

@@ -1,0 +1,188 @@
+<body>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+  />
+
+  <section>
+    <div class="meeting_agenda_select_div">
+      <label class="select_label">Date</label>
+      <div class="custom-date-wrapper">
+        <input
+          class="date_input"
+          type="text"
+          id="datetime-picker"
+          placeholder="Select Date Range"
+        />
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+      <div class="dates_selected" style="display: none">
+        <span class="dates_display"></span>
+        <button class="clear_all">Clear all</button>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #edf5ef;
+      font-family: "Rubik", sans-serif;
+      padding: 10px;
+    }
+    h1,
+    h2,
+    p {
+      margin: 0px;
+    }
+    .meeting_agenda_select_div {
+      width: 250px;
+    }
+    .select_label {
+      font-size: 14px;
+      color: #20313a;
+    }
+    .custom-date-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-top: 5px;
+      padding: 4px 10px;
+      border: 1px solid #20313a33;
+      background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+      box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+        4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+        -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+      border-radius: 7px;
+      color: #20313a;
+    }
+    .date_input {
+      width: 100%;
+      background: transparent;
+      outline: none;
+      border: none;
+      color: #016d24;
+      font-size: 16px;
+      font-weight: 400;
+      font-family: "Rubik", sans-serif;
+    }
+    input::placeholder {
+      color: #20313a;
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .fas.fa-calendar-alt {
+      margin-left: 10px;
+      color: #20313a;
+      cursor: pointer;
+    }
+    .dates_selected {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      color: #20313a;
+    }
+    .clear_all {
+      color: #009b1c;
+      margin-left: auto;
+      background: none;
+      border: none;
+      font-weight: 500;
+      font-family: "Rubik", sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      flatpickr("#datetime-picker", {
+        mode: "range",
+        dateFormat: "F, Y",
+        onReady: function (selectedDates, dateStr, instance) {
+          document
+            .querySelector(".fa-calendar-alt")
+            .addEventListener("click", function () {
+              instance.open();
+            });
+        },
+        onChange: function (selectedDates, dateStr, instance) {
+          if (selectedDates.length > 1) {
+            const startMonth = selectedDates[0].getMonth();
+            const startYear = selectedDates[0].getFullYear();
+            const endMonth = selectedDates[1].getMonth();
+            const endYear = selectedDates[1].getFullYear();
+
+            if (startMonth !== endMonth || startYear !== endYear) {
+              instance.clear();
+              alert("Please select dates within the same month.");
+              return;
+            }
+          }
+
+          const datesSelectedDiv = document.querySelector(".dates_selected");
+          const datesDisplay = document.querySelector(".dates_display");
+
+          if (selectedDates.length > 0) {
+            let displayText = "";
+
+            let selected_dates = selectedDates.map((date) => date.getDate());
+            let selected_dates_array = Array.from(
+              { length: selected_dates[1] - selected_dates[0] + 1 },
+              (_, index) => selected_dates[0] + index
+            );
+
+            if (selected_dates_array.length <= 5) {
+              displayText = selected_dates_array
+                .map((date) => date)
+                .join(" | ");
+            } else {
+              const firstTwoDates = selected_dates_array
+                .slice(0, 2)
+                .map((date) => date);
+              const lastTwoDates = selected_dates_array
+                .slice(-2)
+                .map((date) => date);
+              displayText = `${firstTwoDates.join(
+                " | "
+              )} | .... | ${lastTwoDates.join(" | ")}`;
+            }
+
+            datesDisplay.textContent = displayText;
+            datesSelectedDiv.style.display = "flex";
+          } else {
+            datesSelectedDiv.style.display = "none";
+          }
+
+          if (selectedDates.length > 0) {
+            const monthYearText = selectedDates[0].toLocaleString("default", {
+              month: "long",
+              year: "numeric",
+            });
+            instance.input.value = monthYearText;
+          }
+        },
+
+        showMonths: 1,
+      });
+
+      document
+        .querySelector(".clear_all")
+        .addEventListener("click", function () {
+          document.querySelector("#datetime-picker")._flatpickr.clear();
+          document.querySelector(".dates_selected").style.display = "none";
+        });
+    });
+  </script>
+</body>

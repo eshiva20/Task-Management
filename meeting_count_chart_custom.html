@@ -1,0 +1,238 @@
+<!-- this count chart is done using custom css , to show the fill are for bar need to calculations  -->
+<!-- comment has be written near the bar  -->
+
+<body>
+  <section class="custom_count_chart">
+    <table class="table">
+      <tr>
+        <td>Days</td>
+        <td>Meetings</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="bar">
+            <span class="day">Mon</span>
+            <div class="progress_bar_container">
+              <div class="progress_bar_fill" style="width: 80%"></div>
+              <!-- max count is 25 and its count is 20, so  20/25 = 80% , so 80% width is assigned to it-->
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="count">
+            <img
+              src="./assets/chart_count_play.png"
+              class="play_icon"
+              alt="play_icon"
+            />
+            <span>20</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="bar">
+            <span class="day">Tue</span>
+            <div class="progress_bar_container">
+              <div class="progress_bar_fill" style="width: 68%"></div>
+              <!-- max count is 25 and its count is 17, so  17/25 = 68% , so 68% width is assigned to it-->
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="count">
+            <img
+              src="./assets/chart_count_play.png"
+              class="play_icon"
+              alt="play_icon"
+            />
+            <span>17</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="bar">
+            <span class="day">Wed</span>
+            <div class="progress_bar_container">
+              <div class="progress_bar_fill" style="width: 40%"></div>
+              <!-- max count is 25 and its count is 10, so  10/25 = 40% , so 40% width is assigned to it-->
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="count">
+            <img
+              src="./assets/chart_count_play.png"
+              class="play_icon"
+              alt="play_icon"
+            />
+            <span>10</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="bar">
+            <span class="day">Tue</span>
+            <div class="progress_bar_container">
+              <div class="progress_bar_fill" style="width: 100%"></div>
+              <!-- max count is 25 and its count is 25, so  25/25 = 100% , so 100% width is assigned to it-->
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="count">
+            <img
+              src="./assets/chart_count_play.png"
+              class="play_icon"
+              alt="play_icon"
+            />
+            <span>25</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="bar">
+            <span class="day">Fri</span>
+            <div class="progress_bar_container">
+              <div class="progress_bar_fill" style="width: 28%"></div>
+              <!-- max count is 25 and its count is 7, so  7/25 = 28% , so 28% width is assigned to it-->
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="count">
+            <img
+              src="./assets/chart_count_play.png"
+              class="play_icon"
+              alt="play_icon"
+            />
+            <span>7</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="bar">
+            <span class="day">Sat</span>
+            <div class="progress_bar_container">
+              <div class="progress_bar_fill" style="width: 72%"></div>
+              <!-- max count is 25 and its count is 18, so  18/25 = 72% , so 72% width is assigned to it-->
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="count">
+            <img
+              src="./assets/chart_count_play.png"
+              class="play_icon"
+              alt="play_icon"
+            />
+            <span>18</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="bar">
+            <span class="day">Sun</span>
+            <div class="progress_bar_container">
+              <div class="progress_bar_fill" style="width: 0%"></div>
+              <!-- max count is 25 and its count is 0, so  0/25 = 0% , so 0% width is assigned to it-->
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="count">
+            <img
+              src="./assets/chart_count_play.png"
+              class="play_icon"
+              alt="play_icon"
+            />
+            <span>0</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </section>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Rubik", sans-serif;
+    }
+    .play_icon {
+      width: 17px;
+    }
+    p {
+      margin: 0px;
+      padding: 0px;
+    }
+    .table {
+      width: 700px;
+      background: rgba(154, 194, 194, 0.304);
+      padding: 20px;
+      border-radius: 10px;
+      border-spacing: 10px 15px;
+    }
+
+    .table tr td:nth-child(1) {
+      width: 80%;
+    }
+    .table tr td:nth-child(2) {
+      width: 20%;
+    }
+
+    .table tr:nth-child(1) td {
+      padding-bottom: 5px;
+      color: #20313a;
+      font-weight: 500;
+    }
+
+    .bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .day {
+      width: 50px;
+    }
+
+    .progress_bar_container {
+      width: 100%;
+      height: 30px;
+      background: #edf4ef;
+      border-radius: 7px;
+      overflow: hidden;
+      box-shadow: -1px 1px 3px 0px #afb5b1e5 inset,
+        1px -1px 2px 0px #ffffffe5 inset, -1px -1px 2px 0px #afb5b133 inset,
+        1px 1px 2px 0px #afb5b133 inset, 1px -1px 2px 0px #afb5b180,
+        -1px 1px 2px 0px #ffffff4d;
+      border: 1px solid #d0dedf;
+    }
+
+    .progress_bar_fill {
+      height: 100%;
+      background: linear-gradient(135deg, #7faa97 100%, #8dbca7 0%);
+      border-radius: 7px;
+      box-shadow: -1px 1px 3px 0px #4a6257e5, 1px -1px 2px 0px #c2ffe7e5,
+        -1px -1px 2px 0px #4a625733, 1px 1px 2px 0px #4a625733,
+        1px -1px 2px 0px #4a625780 inset, -1px 1px 2px 0px #c2ffe74d inset;
+    }
+
+    .count {
+      display: flex;
+      gap: 7px;
+      padding-left: 10px;
+    }
+  </style>
+</body>

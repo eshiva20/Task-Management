@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <title>Task Only</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #edf5ef;
+      font-family: "Rubik", sans-serif;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0px;
+    }
+
+    .body {
+      padding: 10px;
+    }
+
+    .title {
+      font-weight: 600;
+      font-size: 32px;
+      color: #20313a;
+    }
+
+    .selection_div {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .meeting_agenda_select_div {
+      width: 150px;
+    }
+
+    .select_label {
+      font-size: 14px;
+      color: #20313a;
+    }
+
+    .meeting_agenda_select_wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .meeting_agenda_select {
+      background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+      font-family: "Rubik", sans-serif;
+      box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+        4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+        -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+      border: 1px solid #20313a33;
+      width: 100%;
+      border-radius: 7px;
+      color: #20313a;
+      font-weight: 400;
+      font-size: 16px;
+      outline: none;
+      cursor: pointer;
+      padding: 5px 10px;
+      appearance: none;
+    }
+
+    .meeting_agenda_select:valid {
+      color: #009b1c;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      display: block;
+    }
+
+    .meeting_agenda_select option[value=""][disabled] {
+      display: none;
+    }
+
+    .meeting_agenda_select_wrapper::after {
+      content: ">";
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      pointer-events: none;
+      color: #666;
+    }
+
+    .stats_tasks_tab_section {
+      margin-left: auto;
+      background-color: #303030;
+      box-shadow: 1px 1px 3px 0px #131313e5 inset,
+        -1px -1px 2px 0px #4d4d4de5 inset, 1px -1px 2px 0px #13131333 inset,
+        -1px 1px 2px 0px #13131333 inset, -1px -1px 2px 0px #13131380,
+        1px 1px 2px 0px #4d4d4d4d;
+      border-radius: 5px;
+      padding: 3px;
+    }
+
+    .tab_btn {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      font-family: "Rubik", sans-serif;
+      color: #fff;
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .selected_tab {
+      box-shadow: -100px 100px 250px 0px #003e0be5,
+        100px -100px 200px 0px #00f82de5, -100px -100px 200px 0px #003e0b33,
+        100px 100px 200px 0px #003e0b33, 4px -4px 2px 0px #003e0b80 inset,
+        -4px 4px 2px 0px #00f82d4d inset;
+      background: #009b1c;
+    }
+
+    .custom-date-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-top: 5px;
+      padding: 4px 10px;
+      border: 1px solid #20313a33;
+      background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+      box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+        4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+        -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+      border-radius: 7px;
+      color: #20313a;
+    }
+
+    .date_input {
+      width: 100%;
+      background: transparent;
+      outline: none;
+      border: none;
+      color: #016d24;
+      font-size: 16px;
+      font-weight: 400;
+      font-family: "Rubik", sans-serif;
+    }
+
+    input::placeholder {
+      color: #20313a;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .switch_div {
+      background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+      box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+        4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+        -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+      border-radius: 7px;
+      padding: 4px 7px 4px 15px;
+      border: 1px solid #20313a33;
+      width: fit-content;
+      margin-top: 5px;
+    }
+
+    .custom-switch:checked {
+      background-color: #28a745;
+      /* Bootstrap's green color */
+      border-color: #28a745;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .custom-switch:focus {
+      box-shadow: none;
+    }
+
+    .custom-switch:checked::before {
+      background-color: #fff;
+      /* Change the toggle knob color */
+    }
+
+    .view_type {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .task_list {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .view_btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .view_btn {
+      border: 1px solid #edf5ef;
+      box-shadow: 1px 1px 3px 0px #c9cfcbe5, -1px -1px 2px 0px #ffffffe5,
+        1px -1px 2px 0px #c9cfcb33, -1px 1px 2px 0px #c9cfcb33,
+        -1px -1px 2px 0px #c9cfcb80 inset, 1px 1px 2px 0px #ffffff4d inset;
+      background: linear-gradient(135deg, #f9fffb 100%, #e1e8e3 0%);
+      padding: 4px 18px;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .selected_btn {
+      background: #016d24;
+    }
+
+    .view_btn_icon {
+      width: 13px;
+    }
+
+    .labels_section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .label,
+    .selected_label {
+      outline: none;
+      border: none;
+      background: linear-gradient(135deg, #f9fffb 0%, #e1e8e3 100%);
+      box-shadow: 1px 1px 3px 0px #c9cfcbe5, -1px -1px 2px 0px #ffffffe5,
+        1px -1px 2px 0px #c9cfcb33, -1px 1px 2px 0px #c9cfcb33,
+        -1px -1px 2px 0px #c9cfcb80 inset, 1px 1px 2px 0px #ffffff4d inset;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      min-width: 60px;
+    }
+
+    .selected_label {
+      background: #016d24;
+      box-shadow: -1px 1px 3px 0px #002c0ee5 inset,
+        1px -1px 2px 0px #02ae3ae5 inset, -1px -1px 2px 0px #002c0e33 inset,
+        1px 1px 2px 0px #002c0e33 inset, 1px -1px 2px 0px #002c0e80,
+        -1px 1px 2px 0px #02ae3a4d;
+      color: #fff;
+    }
+
+    .priority_tabs {
+      border: 1px solid #5b6971;
+      border-radius: 7px;
+      display: flex;
+      margin-left: auto;
+    }
+
+    .priority-btn {
+      transition: background-color 0.1s ease;
+      border: none;
+      outline: none;
+      border-radius: 0px;
+      font-size: 14px;
+      padding: 5px 12px;
+    }
+
+    #priority-high:checked+.priority-btn {
+      background-color: #ee0000;
+      color: white;
+      border-radius: 6px 0px 0px 6px;
+    }
+
+    #priority-medium+.priority-btn {
+      border-right: 1px solid #5b6971;
+      border-left: 1px solid #5b6971;
+    }
+
+    #priority-medium:checked+.priority-btn {
+      background-color: #005bff;
+      color: white;
+      border-right: 1px solid #5b6971;
+      border-left: 1px solid #5b6971;
+    }
+
+    #priority-low:checked+.priority-btn {
+      background-color: #f5a200;
+      color: white;
+      border-radius: 0px 6px 6px 0px;
+    }
+
+    input[type="radio"]:not(:checked)+.priority-btn {
+      background-color: transparent;
+      color: #6c757d;
+    }
+
+    .flag_icon {
+      font-size: 12px;
+      padding-right: 4px;
+    }
+
+    .single_task,
+    .single_subtask {
+      margin-bottom: 10px;
+      border: 0.5px solid #ffffff;
+      background: linear-gradient(135deg, #f9fffb 0%, #e1e8e3 100%);
+      box-shadow: 5px 5px 13px 0px #d5dcd7e5, -5px -5px 10px 0px #ffffffe5,
+        5px -5px 10px 0px #d5dcd733, -5px 5px 10px 0px #d5dcd733,
+        -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    .single_subtask {
+      background: #cde4d4;
+      margin: 10px 40px 0px 40px;
+    }
+
+    .single_task_header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      border-bottom: 1px solid #cbcbcb;
+      padding-bottom: 10px;
+    }
+
+    .header_label {
+      font-size: 14px;
+      font-weight: 400;
+      color: #303030;
+      background: #e2e2e2;
+      border: none;
+      outline: none;
+      padding: 2px 12px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .header_img {
+      width: 14px;
+    }
+
+    .department_label {
+      font-size: 12px;
+      color: #303030;
+      font-weight: 400;
+      padding: 3px 30px 3px 8px;
+      background: #02ae3a4d;
+      clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 85% 50%, 100% 0%);
+    }
+
+    .high {
+      background: #ee0000;
+      color: #fff;
+    }
+
+    .medium {
+      background: #0000ff;
+      color: #fff;
+    }
+
+    .low {
+      background: #ff9900;
+      color: #fff;
+    }
+
+    .employee_label {
+      background: #ffffe9;
+    }
+
+    .link {
+      text-decoration: none;
+      color: #303030;
+      cursor: pointer;
+
+      span {
+        padding: 0px 5px;
+      }
+    }
+
+    .selected_employee_label {
+      background: #ffedb8;
+    }
+
+    .more_actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+
+    .comment {
+      box-shadow: 1px 1px 3px 0px #b0b0b0e5, -1px -1px 2px 0px #ffffffe5,
+        1px -1px 2px 0px #b0b0b033, -1px 1px 2px 0px #b0b0b033,
+        -1px -1px 2px 0px #b0b0b080 inset, 1px 1px 2px 0px #ffffff4d inset;
+      background: linear-gradient(135deg, #ffffff 0%, #e8e8e8 100%);
+      padding: 1px 10px 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .dots {
+      font-size: 20px;
+      color: #727272;
+      cursor: pointer;
+    }
+
+    .comment_img {
+      width: 20px;
+    }
+
+    .red {
+      color: #ee0000;
+    }
+
+    .task {
+      position: relative;
+      z-index: 1;
+
+      &::after {
+        position: absolute;
+        content: "";
+        height: 264px;
+        width: 1px;
+        background: #666;
+        top: 7px;
+        left: 5px;
+        z-index: -1;
+      }
+    }
+
+    .subtask {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: "";
+        width: 57px;
+        height: 0.7px;
+        background: #666;
+        right: 5px;
+        bottom: 10px;
+        z-index: -1;
+      }
+    }
+
+    .blue {
+      color: #0000ff;
+    }
+
+    .yellow {
+      color: #ff9900;
+    }
+
+    .single_task_data {
+      padding-top: 10px;
+    }
+
+    .point {
+      position: relative;
+      z-index: 99;
+
+      .inner_circle {
+        font-size: 12px;
+      }
+
+      .outer_circle {
+        position: absolute;
+        top: 3.8px;
+        left: -3px;
+        font-size: 18px;
+      }
+    }
+
+    .subtask_btn {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      gap: 10px;
+      background-color: #cde4d4;
+      outline: none;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #303030;
+      font-size: 14px;
+    }
+
+    .subTask_icon {
+      width: 15px;
+    }
+
+    .taskname {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .data_label {
+      font-size: 14px;
+      color: #525252;
+      font-weight: 400;
+    }
+
+    .data {
+      color: #20313a;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+
+    .single_task_table {
+      width: 100%;
+      border-spacing: 15px 0px;
+      border-collapse: separate;
+    }
+
+    .single_task_table tr {
+      display: flex;
+    }
+
+    .single_task_table tr td:nth-child(1) {
+      width: 40%;
+    }
+
+    .single_task_table tr td:nth-child(2) {
+      width: 10%;
+    }
+
+    .single_task_table tr td:nth-child(3) {
+      width: 10%;
+    }
+
+    .single_task_table tr td:nth-child(4) {
+      width: 10%;
+    }
+
+    .single_task_table tr td:nth-child(5) {
+      width: 20%;
+    }
+
+    .write_comment {
+      color: #009b1c;
+      text-decoration: underline;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="body" class="body">
+    <h2 class="title">Task</h2>
+    <!-- Filter section for employee,department, date, switch button for my task and show buttons -->
+    <div class="selection_div">
+      <!-- select filter for Employee -->
+      <div class="meeting_agenda_select_div">
+        <label class="select_label">Employee</label>
+        <div class="meeting_agenda_select_wrapper">
+          <select class="meeting_agenda_select" id="meeting-type" required>
+            <option value="" disabled selected>All</option>
+            <option value="option1">All</option>
+            <option value="option2">Month</option>
+            <option value="option3">Year</option>
+          </select>
+        </div>
+      </div>
+      <!-- select filter for Department -->
+      <div class="meeting_agenda_select_div">
+        <label class="select_label">Department</label>
+        <div class="meeting_agenda_select_wrapper">
+          <select class="meeting_agenda_select" id="meeting-type" required>
+            <option value="" disabled selected>All</option>
+            <option value="all">All</option>
+            <option value="finance">Finance</option>
+            <option value="procurement">Procurement</option>
+            <option value="hr">Human Resources (HR)</option>
+          </select>
+        </div>
+      </div>
+      <!-- select filter for Date -->
+      <div class="meeting_agenda_select_div">
+        <label class="select_label">Date</label>
+        <div class="custom-date-wrapper">
+          <input class="date_input" type="text" id="datetime-picker" placeholder="Sep,2024" />
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+      </div>
+      <!-- Switch button to show my task -->
+      <div class="meeting_agenda_select_div">
+        <label class="select_label">My Task</label>
+        <div class="switch_div">
+          <div class="form-check form-switch">
+            <input class="form-check-input custom-switch" type="checkbox" role="switch" id="flexSwitchCheckChecked"
+              checked />
+          </div>
+        </div>
+      </div>
+      <!-- tabs section to show both stats & tasks list or only task lists -->
+      <div class="stats_tasks_tab_section">
+        <button class="tab_btn">Stats & Taski list</button>
+        <button class="tab_btn selected_tab">Task list only</button>
+      </div>
+    </div>
+    <section class="task_lists">
+      <!-- section for view type -->
+      <div class="view_type">
+        <h2 class="task_list">Task list</h2>
+        <!-- grid and list view button-->
+        <div class="view_btns">
+          <button class="view_btn selected_btn">
+            <img class="view_btn_icon" src="./assets/grid_white.png" alt="grid_icon" />
+          </button>
+          <button class="view_btn">
+            <img class="view_btn_icon" src="./assets/listdown_black.png" alt="list_icon" />
+          </button>
+        </div>
+      </div>
+      <!-- all labels section buttons -->
+      <div class="labels_section">
+        <button class="label selected_label">All | 53</button>
+        <button class="label">In Progress</button>
+        <button class="label">Completed</button>
+        <button class="label">Overdue</button>
+        <button class="label">Archive</button>
+        <!-- priority buttons-->
+        <div class="priority_tabs">
+          <input type="radio" class="btn-check" name="priority" id="priority-high" autocomplete="off" checked />
+          <label class="btn btn-danger priority-btn" for="priority-high">
+            <i class="fa-solid fa-flag flag_icon"></i>High
+          </label>
+
+          <input type="radio" class="btn-check" name="priority" id="priority-medium" autocomplete="off" />
+          <label class="btn btn-outline-secondary priority-btn" for="priority-medium">
+            <i class="fa-solid fa-flag flag_icon"></i>Medium
+          </label>
+
+          <input type="radio" class="btn-check" name="priority" id="priority-low" autocomplete="off" />
+          <label class="btn btn-outline-secondary priority-btn" for="priority-low">
+            <i class="fa-solid fa-flag flag_icon"></i>Low
+          </label>
+        </div>
+      </div>
+      <!-- 1st single task card -->
+      <div class="single_task">
+        <div class="single_task_header">
+          <div class="department_label">Ad HOC</div>
+          <!-- added high class to show it in red color -->
+          <div class="priority_label header_label high">
+            <i class="fa-solid fa-flag flag_icon"></i> High
+          </div>
+          <div class="open_label header_label">
+            <img src="./assets/dashed_circle.png" alt="circle_icon" class="circle_icon header_img" />Open
+          </div>
+          <div class="attachment_label header_label">
+            <img src="./assets/attachment_icon.png" alt="Attachment_icon" class="attachment_icon header_img" />2
+            Attachement
+          </div>
+          <div class="activity_label header_label">
+            <img src="./assets/activity_icon.png" alt="activity_icon" class="activity_icon header_img" />Last Activity
+            <img src="./assets/info_icon.png" alt="Info_icon" class="info_icon header_img" />
+          </div>
+          <!-- add class selected_employee_label to show it as highlighted  -->
+          <div class="employee_label header_label">
+            <img src="./assets/employee_icon.png" alt="employee_icon" class="employee_icon header_img" />Anusha- On hold
+          </div>
+          <!-- Link button for the link - (replace # with the link)  -->
+          <button class="header_label">
+            <a href="#" class="link" target="blank">
+              <img src="./assets/link_attached.png" alt="Link_Attached_icon" class="header_img" />
+              <span>Link</span>
+              <img src="./assets/link.png" alt="Link_icon" class="header_img" />
+            </a>
+          </button>
+          <div class="more_actions">
+            <div class="comment">
+              <img src="./assets/comment_icon.png" alt="comment_icon" class="comment_img" />
+            </div>
+            <i class="fa-solid fa-ellipsis-vertical dots"></i>
+          </div>
+        </div>
+        <div class="single_task_data">
+          <table class="single_task_table">
+            <tr>
+              <td>
+                <div class="taskname">
+                  <!-- add class task to show the line that connects the  subtask line -->
+                  <div class="point red task">
+                    <i class="fa-solid fa-circle inner_circle"></i>
+                    <i class="fa-regular fa-circle outer_circle"></i>
+                  </div>
+                  <div>
+                    <p class="data_label">Task name</p>
+                    <p class="data">Make changes in fund allocation team</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <p class="data_label">Assigned to</p>
+                  <p class="data">Anusha</p>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <p class="data_label">Start Date</p>
+                  <p class="data">17 Sep,2024</p>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <p class="data_label">End Date</p>
+                  <p class="data">19 Sep,2024</p>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <p class="data_label">Comment</p>
+                  <p class="data write_comment">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <span>Write a comment</span>
+                  </p>
+                </div>
+              </td>
+              <td>
+                <button class="subtask_btn">
+                  <img src="./assets/subtask_icon.png" class="subTask_icon" alt="subTask_icon" /><span>2 Sub
+                    task</span><i class="fa-solid fa-angle-down"></i>
+                </button>
+              </td>
+            </tr>
+          </table>
+          <!-- single subtask -->
+          <div class="single_subtask">
+            <div class="single_task_header">
+              <!-- added medium class to show it in red color -->
+              <div class="priority_label header_label medium">
+                <i class="fa-solid fa-flag flag_icon"></i> Medium
+              </div>
+              <div class="open_label header_label">
+                <img src="./assets/dashed_circle.png" alt="circle_icon" class="circle_icon header_img" />Open
+              </div>
+              <div class="attachment_label header_label">
+                <img src="./assets/attachment_icon.png" alt="Attachment_icon" class="attachment_icon header_img" />2
+                Attachement
+              </div>
+              <div class="activity_label header_label">
+                <img src="./assets/activity_icon.png" alt="activity_icon" class="activity_icon header_img" />Last
+                Activity
+                <img src="./assets/info_icon.png" alt="Info_icon" class="info_icon header_img" />
+              </div>
+              <!-- add class selected_employee_label to show it as highlighted  -->
+              <div class="employee_label header_label">
+                <img src="./assets/employee_icon.png" alt="employee_icon" class="employee_icon header_img" />Anusha- On
+                hold
+              </div>
+
+              <div class="more_actions">
+                <div class="comment">
+                  <img src="./assets/comment_icon.png" alt="comment_icon" class="comment_img" />
+                </div>
+                <i class="fa-solid fa-ellipsis-vertical dots"></i>
+              </div>
+            </div>
+            <div class="single_task_data">
+              <table class="single_task_table">
+                <tr>
+                  <td>
+                    <div class="taskname">
+                      <!-- add class subtask to show the line that connects the main task line -->
+                      <div class="point blue subtask">
+                        <i class="fa-solid fa-circle inner_circle"></i>
+                        <i class="fa-regular fa-circle outer_circle"></i>
+                      </div>
+                      <div>
+                        <p class="data_label">Task name</p>
+                        <p class="data">
+                          Make changes in fund allocation team
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- single subtask -->
+          <div class="single_subtask">
+            <div class="single_task_header">
+              <!-- added low class to show it in red color -->
+              <div class="priority_label header_label low">
+                <i class="fa-solid fa-flag flag_icon"></i> Low
+              </div>
+              <div class="open_label header_label">
+                <img src="./assets/dashed_circle.png" alt="circle_icon" class="circle_icon header_img" />Open
+              </div>
+              <div class="attachment_label header_label">
+                <img src="./assets/attachment_icon.png" alt="Attachment_icon" class="attachment_icon header_img" />2
+                Attachement
+              </div>
+              <div class="activity_label header_label">
+                <img src="./assets/activity_icon.png" alt="activity_icon" class="activity_icon header_img" />Last
+                Activity
+                <img src="./assets/info_icon.png" alt="Info_icon" class="info_icon header_img" />
+              </div>
+              <!-- add class selected_employee_label to show it as highlighted  -->
+              <div class="employee_label header_label">
+                <img src="./assets/employee_icon.png" alt="employee_icon" class="employee_icon header_img" />Anusha- On
+                hold
+              </div>
+              <div class="more_actions">
+                <div class="comment">
+                  <img src="./assets/comment_icon.png" alt="comment_icon" class="comment_img" />
+                </div>
+                <i class="fa-solid fa-ellipsis-vertical dots"></i>
+              </div>
+            </div>
+            <div class="single_task_data">
+              <table class="single_task_table">
+                <tr>
+                  <td>
+                    <div class="taskname">
+                      <!-- add class subtask to show the line that connects the main task line -->
+                      <div class="point yellow subtask">
+                        <i class="fa-solid fa-circle inner_circle"></i>
+                        <i class="fa-regular fa-circle outer_circle"></i>
+                      </div>
+                      <div>
+                        <p class="data_label">Task name</p>
+                        <p class="data">
+                          Make changes in fund allocation team
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 2nd single task card -->
+      <div class="single_task">
+        <div class="single_task_header">
+          <div class="department_label">Ad HOC</div>
+          <!-- added high class to show it in red color -->
+          <div class="priority_label header_label high">
+            <i class="fa-solid fa-flag flag_icon"></i> High
+          </div>
+          <div class="open_label header_label">
+            <img src="./assets/dashed_circle.png" alt="circle_icon" class="circle_icon header_img" />Open
+          </div>
+          <div class="attachment_label header_label">
+            <img src="./assets/attachment_icon.png" alt="Attachment_icon" class="attachment_icon header_img" />2
+            Attachement
+          </div>
+          <div class="activity_label header_label">
+            <img src="./assets/activity_icon.png" alt="activity_icon" class="activity_icon header_img" />Last Activity
+            <img src="./assets/info_icon.png" alt="Info_icon" class="info_icon header_img" />
+          </div>
+          <!-- add class selected_employee_label to show it as highlighted  -->
+          <div class="employee_label header_label selected_employee_label">
+            <img src="./assets/employee_icon.png" alt="employee_icon" class="employee_icon header_img" />Jaydeep- Open
+          </div>
+          <!-- Link button for the link - (replace # with the link)  -->
+          <button class="header_label">
+            <a href="#" class="link" target="blank">
+              <img src="./assets/link_attached.png" alt="Link_Attached_icon" class="header_img" />
+              <span>Link</span>
+              <img src="./assets/link.png" alt="Link_icon" class="header_img" />
+            </a>
+          </button>
+          <div class="more_actions">
+            <div class="comment">
+              <img src="./assets/comment_icon.png" alt="comment_icon" class="comment_img" />
+            </div>
+            <i class="fa-solid fa-ellipsis-vertical dots"></i>
+          </div>
+        </div>
+        <div class="single_task_data">
+          <table class="single_task_table">
+            <tr>
+              <td>
+                <div class="taskname">
+                  <div class="point red">
+                    <i class="fa-solid fa-circle inner_circle"></i>
+                    <i class="fa-regular fa-circle outer_circle"></i>
+                  </div>
+                  <div>
+                    <p class="data_label">Task name</p>
+                    <p class="data">Make changes in HR team</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <p class="data_label">Assigned to</p>
+                  <p class="data">Jaydeep Aman jay</p>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <p class="data_label">Start Date</p>
+                  <p class="data">17 Sep,2024</p>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <p class="data_label">End Date</p>
+                  <p class="data">19 Sep,2024</p>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <p class="data_label">Comment</p>
+                  <p class="data write_comment">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <span>Write a comment</span>
+                  </p>
+                </div>
+              </td>
+              <td>
+                <button class="subtask_btn">
+                  <img src="./assets/subtask_icon.png" class="subTask_icon" alt="subTask_icon" /><span>2 Sub
+                    task</span><i class="fa-solid fa-angle-down"></i>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</body>
+
+</html>

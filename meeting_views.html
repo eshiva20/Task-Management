@@ -1,0 +1,276 @@
+<body>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <section class="meeting_view_sidebar">
+    <!-- Select view section for graph and calendar -->
+    <div class="view_btns">
+      <h2 class="meeting_view_title">Meeting views</h2>
+      <button class="view_btn">
+        <i class="fa-regular fa-chart-bar icon"></i>
+        <span>Graph</span>
+      </button>
+      <button class="view_btn view_btn_selected">
+        <i class="fa-solid fa-calendar calendar_icon icon"></i>
+        <span>Calendar</span>
+      </button>
+    </div>
+
+    <!-- select Person Section -->
+    <div class="select_person">
+      <h2 class="meeting_view_title">Select Person</h2>
+      <div class="meeting_agenda_select_wrapper">
+        <select class="meeting_agenda_select" id="meeting-type" required>
+          <option value="" disabled selected>Select</option>
+          <option value="option1">All</option>
+          <option value="option2">M.D Sir</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Calendar Section -->
+    <div class="calendar">
+      <h2 class="meeting_view_title">Calendar</h2>
+      <!-- show calendar here -->
+      <div class="calendar_container">
+        <div class="calendar_header">
+          <div class="month_year" id="monthYear"></div>
+          <button class="next_calendar_btn" id="prevMonth">❮</button>
+          <button class="next_calendar_btn" id="nextMonth">❯</button>
+        </div>
+        <div class="calendar_days" id="calendarDays"></div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .calendar_container {
+      width: 300px;
+    }
+    .calendar_header {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
+    .calendar_days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      gap: 7px;
+    }
+    .calendar_day {
+      padding: 8px;
+      border: 1.15px solid #029c1d4d;
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .current-day {
+      background-color: #79b89b;
+      color: white;
+      border-radius: 50%;
+    }
+    .month_year {
+      color: #292d32;
+      font-weight: 400;
+      font-size: 18px;
+    }
+    .next_calendar_btn {
+      box-shadow: 6.6px 6.6px 16.8px 0px #dfe5e1e5,
+        -6.6px -6.6px 13.2px 0px #fbfffde5, 6.6px -6.6px 13.2px 0px #dfe5e133,
+        -6.6px 6.6px 13.2px 0px #dfe5e133,
+        -0.6px -0.6px 1.2px 0px #dfe5e180 inset,
+        0.6px 0.6px 1.2px 0px #fbfffd4d inset;
+      border: 0.3px solid #009b1c;
+      background: linear-gradient(135deg, #f9fffb 100%, #e1e9e3 0%);
+      border-radius: 7px;
+      padding: 4px 9px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    #prevMonth {
+      margin-left: auto;
+    }
+
+    .select_person {
+      padding: 15px 20px;
+      border-bottom: 1px solid #e0dede;
+      border-top: 1px solid #e0dede;
+    }
+    .calendar {
+      padding: 15px 20px;
+    }
+    .meeting_agenda_select_wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      margin-top: 7px;
+    }
+    .meeting_agenda_select {
+      background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+      font-family: "Rubik", sans-serif;
+      box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+        4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+        -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+      border: 1px solid #20313a33;
+      width: 100%;
+      border-radius: 7px;
+      color: #20313a;
+      font-weight: 400;
+      font-size: 16px;
+      outline: none;
+      cursor: pointer;
+      padding: 10px;
+      appearance: none;
+    }
+
+    .meeting_agenda_select option[value=""][disabled] {
+      display: none;
+    }
+    .meeting_agenda_select_wrapper::after {
+      content: ">";
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      pointer-events: none;
+      color: #666;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Rubik", sans-serif;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin: 0px;
+    }
+
+    .meeting_view_sidebar {
+      background-color: #edf5ef;
+      padding: 20px 0px;
+      width: 340px;
+    }
+
+    .meeting_view_title {
+      font-weight: 600;
+      font-size: 20px;
+      color: #20313a;
+      margin-bottom: 10px;
+    }
+    .meeting_view_sidebar .view_btns {
+      padding: 10px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .meeting_view_sidebar .view_btns .view_btn,
+    .view_btn_selected {
+      background: linear-gradient(135deg, #f9fffb 100%, #e1e8e3 0%);
+      border: 1px solid #edf5ef;
+      box-shadow: 1px 1px 3px 0px #c9cfcbe5, -1px -1px 2px 0px #ffffffe5,
+        1px -1px 2px 0px #c9cfcb33, -1px 1px 2px 0px #c9cfcb33,
+        -1px -1px 2px 0px #c9cfcb80 inset, 1px 1px 2px 0px #ffffff4d inset;
+      padding: 15px;
+      border-radius: 12px;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      cursor: pointer;
+    }
+    .meeting_view_sidebar .view_btns .view_btn_selected {
+      background: #000;
+      color: #fff;
+      box-shadow: 1px 1px 3px 0px #000000e5 inset,
+        -1px -1px 2px 0px #000000e5 inset, 1px -1px 2px 0px #00000033 inset,
+        -1px 1px 2px 0px #00000033 inset, -1px -1px 2px 0px #00000080,
+        1px 1px 2px 0px #0000004d;
+    }
+    .meeting_view_sidebar .view_btns .view_btn .icon {
+      font-size: 16px;
+    }
+    .meeting_view_sidebar .view_btns .view_btn span {
+      font-weight: 400;
+      font-size: 18px;
+    }
+  </style>
+
+  <script>
+    const monthYear = document.getElementById("monthYear");
+    const calendarDays = document.getElementById("calendarDays");
+    const prevMonthButton = document.getElementById("prevMonth");
+    const nextMonthButton = document.getElementById("nextMonth");
+
+    let currentDate = new Date();
+
+    function renderCalendar(date) {
+      calendarDays.innerHTML = ""; // Clear previous days
+      const month = date.getMonth();
+      const year = date.getFullYear();
+
+      // Display month and year
+      monthYear.textContent =
+        date.toLocaleString("default", { month: "long" }) + " " + year;
+
+      // Get the first day of the month
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0); // Last day of the month
+      const totalDays = lastDay.getDate();
+      const startDay = firstDay.getDay(); // Day of the week (0-6)
+
+      // Create empty cells for days before the first day
+      for (let i = 0; i < startDay; i++) {
+        const cell = document.createElement("div");
+        cell.className = "calendar_day";
+        calendarDays.appendChild(cell);
+      }
+
+      // Fill in the days of the month
+      for (let day = 1; day <= totalDays; day++) {
+        const cell = document.createElement("div");
+        cell.className = "calendar_day";
+        cell.textContent = day;
+
+        // Highlight the current day
+        if (
+          day === new Date().getDate() &&
+          month === new Date().getMonth() &&
+          year === new Date().getFullYear()
+        ) {
+          cell.classList.add("current-day");
+        }
+
+        calendarDays.appendChild(cell);
+      }
+    }
+
+    // Event listeners for month navigation
+    prevMonthButton.addEventListener("click", () => {
+      currentDate.setMonth(currentDate.getMonth() - 1);
+      renderCalendar(currentDate);
+    });
+
+    nextMonthButton.addEventListener("click", () => {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      renderCalendar(currentDate);
+    });
+
+    // Initial render
+    renderCalendar(currentDate);
+  </script>
+</body>

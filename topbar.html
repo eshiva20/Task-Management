@@ -1,0 +1,126 @@
+<body>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <div class="topbar">
+    <div class="search_div">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input class="input" type="text" placeholder="Search" />
+    </div>
+    <div class="topbar_right">
+      <div class="bell">
+        <i class="fa-regular fa-bell bell_icon"></i>
+      </div>
+      <div class="user_info">
+        <img src="./assets/user.png" alt="user" class="user_logo" />
+        <div class="texts">
+          <p class="name">Hi Aakash</p>
+          <p class="role">Sales Person</p>
+        </div>
+        <i class="fa-solid fa-chevron-down down_arrow"></i>
+      </div>
+    </div>
+  </div>
+  <style>
+    body {
+      margin: 0;
+      background-color: #edf5ef;
+      font-family: "Rubik", sans-serif;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin: 0px;
+    }
+    .topbar {
+      border-bottom: 1px solid #d8d8d8;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      .search_div {
+        background: #edf5ef;
+        border-radius: 7px;
+        border: 1px solid #20313a33;
+        width: fit-content;
+        padding: 5px 8px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #20313a;
+        box-shadow: 2px 2px 5px 0px #d1d8d2e5 inset,
+          -2px -2px 4px 0px #ffffffe5 inset, 2px -2px 4px 0px #d1d8d233 inset,
+          -2px 2px 4px 0px #d1d8d233 inset, -1px -1px 2px 0px #d1d8d280,
+          1px 1px 2px 0px #ffffff4d;
+        .input {
+          background: transparent;
+          outline: none;
+          border: none;
+          font-size: 16px;
+        }
+      }
+      .topbar_right {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 15px;
+        .bell {
+          width: 20px;
+          border: 0.5px solid #009b1c;
+          padding: 10px 12px;
+          border-radius: 10px;
+          box-shadow: 11px 11px 28px 0px #dfe5e1e5,
+            -11px -11px 22px 0px #fbfffde5, 11px -11px 22px 0px #dfe5e133,
+            -11px 11px 22px 0px #dfe5e133, -1px -1px 2px 0px #dfe5e180 inset,
+            1px 1px 2px 0px #fbfffd4d inset;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .bell_icon {
+            font-size: 20px;
+          }
+        }
+        .user_info {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          border: 0.5px solid #009b1c;
+          padding: 5px 10px;
+          border-radius: 7px;
+          width: 180px;
+          height: 32px;
+
+          .user_logo {
+            width: 35px;
+          }
+          .texts {
+            .name {
+              color: #303030;
+              font-weight: 600;
+              font-size: 14px;
+            }
+            .role {
+              color: #000;
+              font-weight: 300;
+              font-size: 12px;
+            }
+          }
+          .down_arrow {
+            margin-left: auto;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  </style>
+  <script></script>
+</body>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <title>Create Meeting</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #edf5ef;
+        font-family: "Rubik", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        margin: 0;
+      }
+      .floating-label {
+        position: relative;
+        background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+        font-family: "Rubik", sans-serif;
+        box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+          4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+          -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+        border: 1px solid #20313a33;
+        width: 100%;
+        border-radius: 10px;
+        color: #20313a;
+        font-weight: 400;
+        font-size: 16px;
+        outline: none;
+        cursor: pointer;
+        padding: 13px 10px;
+        margin-bottom: 20px;
+      }
+
+      .floating-select {
+        font-size: 14px;
+        padding: 4px 0px;
+        display: block;
+        width: 100%;
+        font-family: "Rubik", sans-serif;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        resize: none;
+      }
+
+      .floating-select:valid {
+        outline: none;
+        margin-top: 10px;
+        color: #016d24;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 10px 0px 0px 0px;
+        font-family: "Rubik", sans-serif;
+      }
+
+      label {
+        position: absolute;
+        pointer-events: none;
+        left: 10px;
+        top: 15px;
+        color: #20313a;
+        font-weight: 400;
+        font-size: 16px;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+      }
+
+      .floating-select:focus ~ label,
+      .floating-select:not([value=""]):valid ~ label {
+        top: 7px;
+        font-size: 14px;
+        color: #000;
+      }
+
+      .floating-select:focus ~ .floating-select:focus ~ {
+        width: 50%;
+      }
+
+      *,
+      *:before,
+      *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      .floating-select:focus ~ {
+        -webkit-animation: inputHighlighter 0.3s ease;
+        -moz-animation: inputHighlighter 0.3s ease;
+        animation: inputHighlighter 0.3s ease;
+      }
+
+      .form-container {
+        background: #edf5ef;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .create-form-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        h2 {
+          font-weight: 700;
+          text-align: left;
+          color: #20313a;
+          font-size: 30px;
+        }
+        .cross_icon {
+          font-size: 30px;
+          cursor: pointer;
+        }
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .select {
+        background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+        font-family: "Rubik", sans-serif;
+        box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+          4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+          -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+        border: 1px solid #20313a33;
+        width: 100%;
+        border-radius: 10px;
+        color: #20313a;
+        font-weight: 400;
+        font-size: 16px;
+        outline: none;
+        cursor: pointer;
+        padding: 8px 12px;
+        padding-right: 36px;
+        appearance: none;
+      }
+
+      .select::-ms-expand {
+        display: none;
+      }
+
+      .custom-date-wrapper {
+        position: relative;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        padding: 16px 12px;
+        background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+        box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+          4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+          -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+        border: 1px solid #20313a33;
+        border-radius: 10px;
+        color: #20313a;
+        input {
+          width: 100%;
+          background: transparent;
+          outline: none;
+          border: none;
+          color: #016d24;
+          font-size: 16px;
+          font-weight: 400;
+          font-family: "Rubik", sans-serif;
+        }
+        input::placeholder {
+          color: #20313a;
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+
+      .textarea:focus {
+        margin-top: 15px;
+      }
+      .textarea:valid {
+        margin-top: 5px;
+      }
+
+      option {
+        color: #303030;
+        box-shadow: 2px 2px 5px 0px #c7cdc9e5, -2px -2px 4px 0px #ffffffe5,
+          2px -2px 4px 0px #c7cdc933, -2px 2px 4px 0px #c7cdc933,
+          -1px -1px 2px 0px #c7cdc980 inset, 1px 1px 2px 0px #ffffff4d inset;
+        background: linear-gradient(135deg, #f9fffb 100%, #e1e8e3 0%);
+      }
+
+      .sync_div {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        .checkbox {
+          width: 17px;
+          height: 17px;
+          cursor: pointer;
+          accent-color: #000;
+        }
+        .sync_text {
+          color: #20313a;
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+
+      .submit-btn {
+        width: 100%;
+        background: #016d24;
+        color: white;
+        padding: 11px 0px;
+        font-weight: 600;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        margin-top: 3%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form>
+        <div class="create-form-title">
+          <h2>Create Meeting</h2>
+          <i class="fa-solid fa-xmark cross_icon"></i>
+        </div>
+
+        <div class="floating-label">
+          <select
+            class="floating-select"
+            onclick="this.setAttribute('value', this.value);"
+            value=""
+            id="meeting_type"
+            required
+          >
+            <option value=""></option>
+            <option value="option1">Recurring meeting</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+          <label>Meeting Type</label>
+        </div>
+
+        <div class="floating-label">
+          <select
+            class="floating-select"
+            onclick="this.setAttribute('value', this.value);"
+            value=""
+            id="department"
+            required
+          >
+            <option value=""></option>
+            <option value="option1">Finance</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+          <label>Department</label>
+        </div>
+
+        <div class="custom-date-wrapper">
+          <input
+            type="text"
+            id="datetime-picker"
+            placeholder="Date, Day & Time"
+          />
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+
+        <div class="floating-label">
+          <select
+            class="floating-select"
+            onclick="this.setAttribute('value', this.value);"
+            value=""
+            id="department"
+            required
+          >
+            <option value=""></option>
+            <option value="option1">3x Weekly | Mon, Wed, Fri</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+          <label>Repeat Frequency</label>
+        </div>
+
+        <div class="floating-label">
+          <select
+            class="floating-select"
+            onclick="this.setAttribute('value', this.value);"
+            value=""
+            id="department"
+            required
+          >
+            <option value=""></option>
+            <option value="15mins">15 minutes</option>
+            <option value="20mins">30 mintues</option>
+            <option value="1hour">1 hour</option>
+          </select>
+          <label>Notification</label>
+        </div>
+
+        <div class="floating-label">
+          <select
+            class="floating-select"
+            onclick="this.setAttribute('value', this.value);"
+            value=""
+            id="attendees"
+            required
+          >
+            <option value=""></option>
+            <option value="aakash">Aakash</option>
+            <option value="anusha">Anusha</option>
+            <option value="jaydeep">Jaydeep</option>
+          </select>
+          <label>Attendees</label>
+        </div>
+
+        <div class="floating-label">
+          <select
+            class="floating-select"
+            onclick="this.setAttribute('value', this.value);"
+            value=""
+            id="leader"
+            required
+          >
+            <option value=""></option>
+            <option value="mdSir">M.D Sir</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+          <label>Leader</label>
+        </div>
+
+        <div class="floating-label">
+          <select
+            class="floating-select"
+            onclick="this.setAttribute('value', this.value);"
+            value=""
+            id="meeting_cordinator"
+            required
+          >
+            <option value=""></option>
+            <option value="richa">Richa</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+          <label>Cordinator</label>
+        </div>
+
+        <div class="floating-label">
+          <textarea
+            class="floating-select textarea"
+            rows="2"
+            name="agenda"
+            id="textarea"
+            required
+          ></textarea>
+          <label>Agenda</label>
+        </div>
+
+        <div class="sync_div">
+          <input class="checkbox" type="checkbox" name="" id="" />
+          <span class="sync_text">Sync meeting with Google Meet</span>
+        </div>
+
+        <button type="submit" class="submit-btn">Done</button>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        flatpickr("#datetime-picker", {
+          enableTime: true,
+          dateFormat: "d M, Y | D | h:i K", // Custom format for the output
+          formatDate: function (dateObj, format) {
+            const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            const months = [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ];
+
+            const day = dateObj.getDate();
+            const month = months[dateObj.getMonth()];
+            const year = dateObj.getFullYear();
+            const weekday = days[dateObj.getDay()];
+
+            let hours = dateObj.getHours();
+            const minutes = dateObj.getMinutes();
+            const ampm = hours >= 12 ? "PM" : "AM";
+            hours = hours % 12 || 12;
+
+            return `${day} ${month}, ${year} | ${weekday} | ${hours}:${
+              minutes < 10 ? "0" : ""
+            }${minutes} ${ampm}`;
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

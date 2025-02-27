@@ -1,0 +1,254 @@
+<body>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
+  />
+  <section class="otp_section">
+    <div class="bg_img">
+      <div class="logo_div">
+        <img src="./assets/task_icon.png" alt="Task_icon" class="task_icon" />
+        <p class="task_master">Task Master</p>
+      </div>
+      <div class="text_para">
+        "Welcome <span class="font_green">Task Master</span> , your all-in-one
+        platform for seamless task and meeting management. Stay organized,
+        collaborate effortlessly, and boost productivity with tools designed to
+        streamline your workflow. Whether you're scheduling
+        <span class="font_green">meetings, assigning tasks ,</span> or
+        <span class="font_green">tracking progress,</span> we’re here to help
+        you stay ahead. Log in to access your personalized dashboard and manage
+        your projects with ease."
+      </div>
+    </div>
+    <div class="form_div">
+      <form class="form">
+        <p class="form_title">Enter OTP</p>
+        <p class="form_text">
+          We have sent 4 digit OTP to your registered mail ID
+          <span>aakash01@healthbiotech.in</span>
+        </p>
+        <p class="invalid_otp_text">
+          <span class="exclamation_icon">!</span> Invalid OTP
+        </p>
+        <div class="otp_container">
+          <input
+            type="text"
+            class="invalid_otp_input"
+            maxlength="1"
+            pattern="[0-9]*"
+            inputmode="numeric"
+            placeholder="*"
+          />
+          <input
+            type="text"
+            class="invalid_otp_input"
+            maxlength="1"
+            pattern="[0-9]*"
+            inputmode="numeric"
+            placeholder="*"
+          />
+          <input
+            type="text"
+            class="otp_input"
+            maxlength="1"
+            pattern="[0-9]*"
+            inputmode="numeric"
+            placeholder="*"
+          />
+          <input
+            type="text"
+            class="otp_input"
+            maxlength="1"
+            pattern="[0-9]*"
+            inputmode="numeric"
+            placeholder="*"
+          />
+        </div>
+        <p class="expire_text">OTP will expire in 30 sec</p>
+        <button type="submit" class="submit_btn">Verify OTP</button>
+        <p class="resend">
+          <span>Didn’t get OTP?</span>
+          <span class="resend_otp">Resend OTP</span>
+        </p>
+      </form>
+    </div>
+  </section>
+  <style>
+    body {
+      margin: 0;
+      background-color: #edf5ef;
+      font-family: "Rubik", sans-serif;
+    }
+    h1,
+    h2,
+    p {
+      margin: 0px;
+    }
+    .otp_section {
+      display: flex;
+    }
+    .bg_img {
+      background-image: url(https://socialbuddies.co/assets/wp-content/uploads/2022/12/2.jpg);
+      width: 65%;
+      height: 100vh;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+    }
+    .bg_img::after {
+      position: absolute;
+      content: "";
+      height: 100%;
+      width: 100%;
+      background: #20313aeb;
+      top: 0;
+      left: 0;
+    }
+    .logo_div {
+      z-index: 1;
+      position: absolute;
+      padding: 25px;
+      text-align: center;
+    }
+    .task_icon {
+      width: 40px;
+    }
+    .task_master {
+      padding-top: 10px;
+      color: #fff;
+      font-size: 18px;
+    }
+    .text_para {
+      font-size: 20px;
+      color: #fff;
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 300;
+      width: 500px;
+      line-height: 30px;
+    }
+    .font_green {
+      color: #009b1c;
+    }
+    .form_div {
+      width: 35%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form {
+      width: 75%;
+    }
+    .form_title {
+      color: #20313a;
+      font-size: 36px;
+      font-weight: 600;
+    }
+    .form_text {
+      color: #6d6d6d;
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+    .invalid_otp_text {
+      color: #ff5449;
+      width: 80%;
+      margin-bottom: 8px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      justify-content: flex-end;
+    }
+
+    /* This class name is to be used when invalid otp text has to be disabled */
+    .disable_invalid_otp_text {
+      display: none;
+    }
+    .exclamation_icon {
+      border: 1.5px solid #ff5449;
+      border-radius: 50%;
+      padding: 0px 5px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    .otp_container {
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+    }
+    .otp_input,
+    .invalid_otp_input {
+      width: 55px;
+      height: 55px;
+      text-align: center;
+      font-size: 24px;
+      border: 1px solid #20313a33;
+      border-radius: 12px;
+      background-color: #edf5ef;
+      box-shadow: 2px 2px 5px 0px #d1d8d2e5 inset,
+        -2px -2px 4px 0px #ffffffe5 inset, 2px -2px 4px 0px #d1d8d233 inset,
+        -2px 2px 4px 0px #d1d8d233 inset, -1px -1px 2px 0px #d1d8d280,
+        1px 1px 2px 0px #ffffff4d;
+      outline: none;
+    }
+
+    /* This class name is to be used when input digit is invalid */
+    .invalid_otp_input {
+      border: 2px solid #ff200040;
+    }
+    .otp_input::placeholder,
+    .invalid_otp_input::placeholder {
+      font-size: 45px;
+      color: #20313a80;
+      height: 24px;
+      width: 50px;
+    }
+    .invalid_otp_input::placeholder {
+      width: 48px;
+    }
+    .expire_text {
+      color: #6d6d6d;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .submit_btn {
+      cursor: pointer;
+      width: 100%;
+      background: #016d24;
+      color: white;
+      padding: 12px 0px;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 35px;
+      box-shadow: 1px 1px 3px 0px rgba(0, 44, 14, 0.9),
+        -1px -1px 2px 0px rgba(2, 174, 58, 0.9),
+        1px -1px 2px 0px rgba(0, 44, 14, 0.2),
+        -1px 1px 2px 0px rgba(0, 44, 14, 0.2),
+        -1px -1px 2px 0px rgba(0, 44, 14, 0.5) inset,
+        1px 1px 2px 0px rgba(2, 174, 58, 0.3) inset;
+    }
+    .submit_btn:hover {
+      box-shadow: 1px 1px 5px rgba(0, 44, 14, 0.5);
+      transition: box-shadow 0.8s ease;
+    }
+    .resend {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #000;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-direction: column;
+    }
+    .resend_otp {
+      color: #009b1c;
+      cursor: pointer;
+    }
+  </style>
+</body>

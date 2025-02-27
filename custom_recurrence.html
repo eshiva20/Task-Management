@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Recurrence</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        background-color: #edf5ef;
+        font-family: "Rubik", sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        margin: 0;
+      }
+      .form-container {
+        background: #edf5ef;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        color: #20313a;
+        font-weight: 400;
+      }
+
+      .first-line {
+        display: flex;
+        align-items: flex-end;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .repeat_every_div {
+        width: 60%;
+      }
+
+      .create-form-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        h2 {
+          font-weight: 700;
+          text-align: left;
+          color: #20313a;
+          font-size: 30px;
+        }
+        .cross_icon {
+          font-size: 30px;
+          cursor: pointer;
+        }
+      }
+      .custom-select-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        margin-top: 5px;
+      }
+
+      .select {
+        background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+        font-family: "Rubik", sans-serif;
+        box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+          4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+          -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+        border: 1px solid #20313a33;
+        width: 100%;
+        border-radius: 10px;
+        color: #20313a;
+        font-weight: 400;
+        font-size: 16px;
+        outline: none;
+        cursor: pointer;
+        padding: 8px 12px;
+        padding-right: 36px;
+        appearance: none;
+      }
+
+      .custom-select-wrapper::after {
+        content: "▼"; /* Arrow character */
+        position: absolute;
+        right: 15px; /* Position the arrow */
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none; /* Allows clicks to pass through */
+        color: #666; /* Arrow color */
+      }
+
+      .counter-div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        width: 40%;
+      }
+      .counter-btn {
+        background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+        box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+          4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+          -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+        border: none;
+        border-radius: 6px;
+        padding: 11px 13px;
+        cursor: pointer;
+      }
+      .icon {
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .counter-num {
+        font-size: 30px;
+        font-weight: 700;
+        width: 30px;
+        text-align: center;
+      }
+      .week-lists {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+      .week {
+        background: #edf4ef;
+        border: 1px solid #e1e1e1;
+        border-radius: 50px;
+        padding: 5px 15px;
+        box-shadow: 1px -1px 3px 0px #ccd2cee5 inset,
+          -1px 1px 2px 0px #ffffffe5 inset, 1px 1px 2px 0px #ccd2ce33 inset,
+          -1px -1px 2px 0px #ccd2ce33 inset, -1px 1px 2px 0px #ccd2ce80,
+          1px -1px 2px 0px #ffffff4d;
+        color: #727272;
+        cursor: pointer;
+      }
+      .second-line {
+        margin-bottom: 20px;
+      }
+      .third-line {
+        display: flex;
+        align-items: flex-end;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .third-left {
+        width: 60%;
+      }
+      .third-right {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      .end-types {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 5px;
+      }
+      .type {
+        box-shadow: 1px -1px 3px 0px #ccd2cee5 inset,
+          -1px 1px 2px 0px #ffffffe5 inset, 1px 1px 2px 0px #ccd2ce33 inset,
+          -1px -1px 2px 0px #ccd2ce33 inset, -1px 1px 2px 0px #ccd2ce80,
+          1px -1px 2px 0px #ffffff4d;
+        background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+        border-radius: 10px;
+        padding: 10px;
+        color: #303030;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer; /* Make the whole div clickable */
+      }
+      .radio {
+        accent-color: #303030;
+        cursor: pointer;
+        margin: 0;
+      }
+      .type-text {
+        width: 100%;
+      }
+      .submit-btn {
+        width: 100%;
+        background: #016d24;
+        color: white;
+        padding: 11px 0px;
+        font-weight: 600;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 3%;
+      }
+      .right-date {
+        background: #ebebeb;
+        border: 1px solid #e1e1e1;
+        padding: 10px 0px;
+        text-align: center;
+        border-radius: 5px;
+        color: #908d8d;
+        outline: none;
+        width: fit-content;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      .right-counter-div {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      .right-counter-btn {
+        background: linear-gradient(0deg, #f9fffb 3%, #e1e9e3 100%);
+        box-shadow: 4px 4px 10px 0px #d5dcd7e5, -4px -4px 8px 0px #ffffffe5,
+          4px -4px 8px 0px #d5dcd733, -4px 4px 8px 0px #d5dcd733,
+          -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+        border: none;
+        border-radius: 6px;
+        padding: 11px 13px;
+        cursor: pointer;
+      }
+      .right-counter-num {
+        font-size: 30px;
+        font-weight: 700;
+        width: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <div class="create-form-title">
+        <h2>Custom Recurrence</h2>
+        <i class="fa-solid fa-xmark cross_icon"></i>
+      </div>
+      <form id="meeting-form">
+        <div class="first-line">
+          <div class="repeat_every_div">
+            <label>Repeat every</label>
+            <div class="custom-select-wrapper">
+              <select class="select" id="meeting-type">
+                <option value="" disabled selected>Repeat</option>
+                <option value="option1">Week</option>
+                <option value="option2">Month</option>
+                <option value="option3">Year</option>
+              </select>
+            </div>
+          </div>
+          <div class="counter-div">
+            <button id="decrement-btn" class="counter-btn">
+              <i class="fa-solid fa-minus icon"></i>
+            </button>
+            <span id="counter" class="counter-num">1</span>
+            <button id="increment-btn" class="counter-btn">
+              <i class="fa-solid fa-plus icon"></i>
+            </button>
+          </div>
+        </div>
+        <div class="second-line">
+          <label>Repeat on</label>
+          <div class="week-lists">
+            <span class="week">Mon</span>
+            <span class="week">Tue</span>
+            <span class="week">Wed</span>
+            <span class="week">Thur</span>
+            <span class="week">Fri</span>
+            <span class="week">Sat</span>
+            <span class="week">Sun</span>
+          </div>
+        </div>
+        <div class="third-line">
+          <div class="third-left">
+            <label>Ends</label>
+            <div class="end-types">
+              <div class="type">
+                <input id="never" name="type" class="radio" type="radio" />
+                <p class="type-text">Never</p>
+              </div>
+              <div class="type">
+                <input id="on" name="type" class="radio" type="radio" />
+                <p class="type-text">On</p>
+              </div>
+              <div class="type">
+                <input id="after" name="type" class="radio" type="radio" />
+                <p class="type-text">After</p>
+              </div>
+            </div>
+          </div>
+          <div class="third-right">
+            <input
+              type="text"
+              class="right-date"
+              id="datetime-picker"
+              placeholder="31 August, 2024"
+            />
+            <div class="right-counter-div">
+              <button id="right-decrement-btn" class="right-counter-btn">
+                <i class="fa-solid fa-minus icon"></i>
+              </button>
+              <span id="right-counter" class="right-counter-num">1</span>
+              <button id="right-increment-btn" class="right-counter-btn">
+                <i class="fa-solid fa-plus icon"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Done</button>
+      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        flatpickr("#datetime-picker", {
+          enableTime: false,
+          dateFormat: "Y-m-d", // The format that will be used internally
+          altInput: true, // Enables the alternate input field
+          altFormat: "d F, Y", // The format to display in the alternate input field
+          placeholder: "Select date",
+        });
+
+        // Counter 1
+        const counterDisplay = document.getElementById("counter");
+        const incrementBtn = document.getElementById("increment-btn");
+        const decrementBtn = document.getElementById("decrement-btn");
+
+        let counterValue = 1;
+
+        incrementBtn.addEventListener("click", function () {
+          counterValue++;
+          counterDisplay.textContent = counterValue;
+        });
+
+        decrementBtn.addEventListener("click", function () {
+          if (counterValue > 1) {
+            counterValue--;
+            counterDisplay.textContent = counterValue;
+          }
+        });
+
+        // Counter 2
+        const rightCounterDisplay = document.getElementById("right-counter");
+        const rightIncrementBtn = document.getElementById(
+          "right-increment-btn"
+        );
+        const rightDecrementBtn = document.getElementById(
+          "right-decrement-btn"
+        );
+
+        let rightCounterValue = 1;
+
+        rightIncrementBtn.addEventListener("click", function () {
+          rightCounterValue++;
+          rightCounterDisplay.textContent = rightCounterValue;
+        });
+
+        rightDecrementBtn.addEventListener("click", function () {
+          if (rightCounterValue > 1) {
+            rightCounterValue--;
+            rightCounterDisplay.textContent = rightCounterValue;
+          }
+        });
+
+        // Handle clicks on .type divs
+        document.querySelectorAll(".type").forEach((typeDiv) => {
+          typeDiv.addEventListener("click", function () {
+            const radio = this.querySelector(".radio");
+            if (radio) {
+              radio.checked = true; // Select the radio button
+            }
+          });
+        });
+
+        // Prevent form submission
+        const form = document.getElementById("meeting-form");
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+        });
+      });
+    </script>
+  </body>
+</html>

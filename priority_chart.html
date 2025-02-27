@@ -1,0 +1,170 @@
+<body>
+  <div class="card">
+    <h2 class="card_title">Priority</h2>
+    <div class="chart_container">
+      <canvas id="priorityChart"></canvas>
+      <div class="chart_center">
+        <p class="chart_title">Open task</p>
+        <p class="chart_count">60</p>
+      </div>
+    </div>
+    <div class="chart_labels">
+      <div class="label pending"><span>High</span> <span>20</span></div>
+      <div class="label completed"><span>Med</span> <span>20</span></div>
+      <div class="label overdue"><span>Low</span> <span>20</span></div>
+    </div>
+  </div>
+  <style>
+    body {
+      margin: 0;
+      background-color: #edf5ef;
+      font-family: "Rubik", sans-serif;
+    }
+    h1,
+    h2,
+    p {
+      margin: 0px;
+    }
+    .card {
+      box-shadow: 5px 5px 13px 0px #d5dcd7e5, -5px -5px 10px 0px #ffffffe5,
+        5px -5px 10px 0px #d5dcd733, -5px 5px 10px 0px #d5dcd733,
+        -1px -1px 2px 0px #d5dcd780 inset, 1px 1px 2px 0px #ffffff4d inset;
+      background: linear-gradient(135deg, #f9fffb 5%, #e1e8e3 95%);
+      width: 250px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .card_title {
+      text-align: center;
+      color: #20313a;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .chart_container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+    .chart_center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #303030;
+    }
+    .chart_title {
+      font-weight: 300;
+      font-size: 18px;
+    }
+    .chart_count {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 30px;
+    }
+    .chart_labels {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .label {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .label span:nth-child(1) {
+      color: #303030;
+      margin-bottom: 5px;
+    }
+    .label span:nth-child(2) {
+      border-radius: 50px;
+      margin: auto;
+      color: #feffff;
+      padding: 2px 10px;
+    }
+    .label.pending span:nth-child(2) {
+      background: #ff3518;
+      box-shadow: 1px -1px 3px 0px #66150ae5 inset,
+        -1px 1px 2px 0px #ff5526e5 inset, 1px 1px 2px 0px #66150a33 inset,
+        -1px -1px 2px 0px #66150a33 inset, -1px 1px 2px 0px #66150a80,
+        1px -1px 2px 0px #ff55264d;
+    }
+    .label.completed span:nth-child(2) {
+      box-shadow: 1px -1px 3px 0px #23482ae5 inset,
+        -1px 1px 2px 0px #8dffa6e5 inset, 1px 1px 2px 0px #23482a33 inset,
+        -1px -1px 2px 0px #23482a33 inset, -1px 1px 2px 0px #23482a80,
+        1px -1px 2px 0px #8dffa64d;
+      background: #58b368;
+    }
+    .label.overdue span:nth-child(2) {
+      background: #f5487f;
+      box-shadow: 1px -1px 3px 0px #621d33e5 inset,
+        -1px 1px 2px 0px #ff73cbe5 inset, 1px 1px 2px 0px #621d3333 inset,
+        -1px -1px 2px 0px #621d3333 inset, -1px 1px 2px 0px #621d3380,
+        1px -1px 2px 0px #ff73cb4d;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ptx = document.getElementById("priorityChart").getContext("2d");
+    const priorityChart = new Chart(ptx, {
+      type: "doughnut",
+      data: {
+        labels: ["High", "Medium", "low"],
+        datasets: [
+          {
+            label: "Tasks",
+            data: [20, 20, 20],
+            backgroundColor: [
+              "#3498db", // Completed - Blue
+              "#f1c40f", // Pending - Yellow
+              "#FF3518", // Overdue - Red
+            ],
+            borderColor: "#EDF5EF",
+            borderWidth: 5,
+            borderRadius: 10,
+          },
+        ],
+      },
+      options: {
+        cutout: "80%",
+        responsive: true,
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: function (tooltipItem) {
+                const dataset =
+                  tooltipItem.chart.data.datasets[tooltipItem.datasetIndex];
+                const total = dataset.data.reduce(
+                  (sum, value) => sum + value,
+                  0
+                );
+                const currentValue = dataset.data[tooltipItem.dataIndex];
+                const percentage = ((currentValue / total) * 100).toFixed(2);
+                return ` ${tooltipItem.label}: ${percentage}%`;
+              },
+            },
+          },
+          legend: {
+            display: false,
+          },
+        },
+        onHover: function (event) {
+          const points = this.getElementsAtEventForMode(
+            event,
+            "nearest",
+            { intersect: true },
+            true
+          );
+          event.native.target.style.cursor = points.length
+            ? "pointer"
+            : "default";
+        },
+      },
+    });
+  </script>
+</body>
